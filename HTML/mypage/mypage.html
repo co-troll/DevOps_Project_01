@@ -4,8 +4,42 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="/team project/CSS/mypage/mypage.css">
 </head>
 <body>
-    이경재
+    <div>
+        <div class="image_top">
+            <div>이미지 선택</div>
+            <div class="background">
+                <div class="oen">
+                    <form method="post" enctype="multipart/form-data">
+                        <div class="button">
+                            <label for="chooseFile">
+                                👉 CLICK HERE! 👈
+                            </label>
+                        </div>
+                        <input type="file" id="chooseFile" name="chooseFile" accept="image/*" onchange="loadFile(this)">
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 닉네임변경하기 화면 시작-->
+    <div class="top">
+        <div class="nickname">
+            <div class="change">
+              <label for="">닉네임 변경</label>
+              <div class="change2">
+              <input type="text">
+                  <input type="button" class="change_button" value="변경하기">
+                </div>
+           </div>
+           <div class="profile">
+            <label for="">프로필 사진 추가</label>
+            <input type="button"  value="프로필 변경하기">
+           </div>
+        </div>
+    </div>
+    <!-- 닉네임변경하기 화면 끝 -->
 </body>
 </html>

@@ -1,0 +1,138 @@
+/* 전체를 감싸고있는 top */
+.top{
+    width: 500px;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+    display: none;
+}
+
+/* 2번째로 감싸고있는 nickname */
+.nickname{
+    width: 500px;
+    height: 500px;
+    display: flex;
+    justify-content: center;
+    flex: content;
+    border: 1px solid;
+    align-items: center;
+    flex-direction: column;
+    background-color: #313338;
+    border-radius: 7px;
+}
+
+
+
+
+
+
+/* 닉네임 변경과 인풋들을 품고있는 div */
+.change{
+    display: flex;
+    margin-top: 150px;
+    flex: content;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 50px;
+}
+
+
+/* 닉네임 변경 */
+.change > label{
+    margin: 13px;
+    padding-right: 300px;
+    font-size: 13px;
+    font-weight: 600;
+    color: #b5bac1;
+}
+
+
+/* 닉네임 변경&변경하기 묵여있는 안에 #인풋 */
+.change2 > input:nth-child(1){
+    width: 300px;
+    height: 25px;
+    background-color: #1E1F22;
+    border-radius: 5px;
+    color: #ffff;
+}
+
+
+/* 변경하기 인풋 */
+.change_button{
+    width: 70px;
+    height: 25px;
+    color: #ffff;
+    border-radius: 5px;
+    background-color:#5865F2;
+}
+
+
+
+
+
+
+/* 프로필 사진 추가를 품고있는 div */
+.profile{
+    margin-bottom: 170px;
+    padding-right: 210px;
+    display: flex;
+    flex-direction: column;
+}
+
+
+/* 프로필 추가 */
+.profile > label{
+    font-size: 13px;
+    font-weight: 600;
+    margin-bottom: 10px;
+    color: #b5bac1;
+    margin: 10px;
+    
+}
+
+
+/* 프로필 추가 #인풋 */
+.profile > input {
+    width: 160px;
+    height: 40px;
+    color: #ffff;
+    font-size: 15px;
+    font-weight: 400;
+    background-color: #5865F2;
+    border-radius: 7px;
+}
+
+
+
+
+
+
+
+
+/* 이미지 선택하는 css */
+.image_top{
+    width: 400px;
+    height: 400px;
+    background-color: #4c4e54;
+    border-radius: 5px;
+}
+
+
+/* 두번째 감싸고 있는 백그라운드 컬러용 */
+.background{
+    width: 250px;
+    height: 250px;
+    background-color: #313338;
+    border-radius: 5px;
+}
+
+.oen{
+    width: 200px;
+    height: 200px;
+    background-color: #5865F2;
+    border-radius: 100px;
+ 
+
+}
