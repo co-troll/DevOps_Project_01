@@ -4,8 +4,67 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="../../CSS/login/login.css">
+    <link rel="stylesheet" href="../../CSS/main.css">
 </head>
 <body>
-    
+    <div id="container"> 
+        <div class="loginRegisterBox">
+            <div class="leftImageBox"> <!-- 로그인 박스중 왼쪽을 담당  -->
+                <img src="" alt="">이미지 들어갈 자리
+            </div>
+            <div class="rightInfoBox"> <!-- 로그인 박스중 오른쪽을 담당  -->
+                <div class="loginBox"> <!-- 로그인  -->
+                    <div>
+                        <h2>로그인</h2>
+                    </div>
+                    <div class="idInputBox">
+                        <p><label for="id">아이디</label></p>
+                        <p><input type="text" placeholder="아이디를 입력해주세요" class="idInput" name='id'></p>
+                    </div>
+                    <div class="passwordInputBox">
+                        <p><label for="password" class="passwordLabel">비밀번호</label></p>
+                        <p><input type="password" placeholder="비밀번호를 입력해주세요" class="passwordInput" name="password"></p>
+                    </div>
+                    <p class="findPassword"><a href="">비밀번호를 잊으셨나요?</a></p>
+                    <div>
+                        <button class="loginBtn">로그인</button>
+                    </div>
+                    <p class="registerText">계정이 필요한가요? <a href="">가입하기</a></p>
+                </div>
+            </div>
+        </div>
+        <div class="rightregBox">
+            <div class="registerBox"> <!-- 회원가입  -->
+                <div>
+                    <h2>회원가입</h2>
+                </div>
+                <div class="regidInputBox">
+                    <p><label for="id">아이디</label></p>
+                    <p><input type="text" placeholder="아이디를 입력해주세요" class="regidInput" name='id'></p>
+                </div>
+                <div class="regPasswordInputBox">
+                    <p><label for="password" class="passwordLabel">비밀번호</label></p>
+                    <p><input type="password" placeholder="비밀번호를 입력해주세요" class="regPasswordInput" name="password"></p>
+                </div>
+                <div class="passwordreInputBox">
+                    <p><label for="password" class="passwordreLabel">비밀번호 확인</label></p>
+                    <p><input type="password" placeholder="비밀번호를 입력해주세요" class="passwordreInput" name="password"></p>
+                </div>
+                <div class="nicknameInputBox">
+                    <p><label for="nickname" class="nicknameLabel">닉네임</label></p>
+                    <p><input type="text" placeholder="닉네임을 입력해주세요" class="nicknameInput" name="nickname"></p>
+                </div>
+                <div class="checkBoxInput">
+                    <input type="checkbox" id="check_btn"><label for="check_btn"><span>사이트 소식을 알림으로 보내주세요.</span></label>
+                </div>
+                <div>
+                    <button class="regBtn">계속하기</button>
+                </div>
+                <p class="registerText"><a href="">이미 계정이 있으신가요?</a></p>
+            </div>
+        </div>
+    </div>
 </body>
+<script src="../../JS/login/login.js"></script>
 </html>
