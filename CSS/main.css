@@ -1,0 +1,23 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --main-back-color: #313338;
+    --side-back-color: #2B2D31;
+    --tab-back-color: #1E1F22;
+    --side-text-color:  #939aa3;
+    --main-text-color: #f2f3f5;
+    /* 사용법 color: var(--main-back-color) */
+
+}
+
+ol, ul, li {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+} 
