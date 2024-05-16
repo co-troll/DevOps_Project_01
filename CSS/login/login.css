@@ -19,13 +19,12 @@ ul,li {
     align-items: center;
 }
 
-#container .loginRegisterBox{
+#container > .loginRegisterBox{
     width: 800px;
     height: 500px;
     background: var(--main-back-color);
     display: flex;
     border-radius: 3px;
-    position: absolute;
 }
 
 .loginRegisterBox .leftImageBox {
@@ -35,20 +34,23 @@ ul,li {
     border-radius: 3px;
 }
 
-.loginRegisterBox .rightInfoBox {
-    width: 350px;
+.loginRegisterBox #rightInfoBox {
+    width: 400px;
     height: 400px;
-    /* background: var(--main-back-color); */
+    background: var(--main-back-color);
     display: flex;
     justify-content: center;
     align-items: center;
     margin-top: 40px;
-    margin-left: 25px;
+    transition: all 1s;
 }
 
-/* .loginBox {
-    display: none;
-}*/
+.loginBox {
+    /* display: none; */
+    /* width: 350px;
+    height: 400px; */
+    transition: all 1s;
+}
 
 .loginBox > div > h2 {
     text-align: center;
@@ -153,9 +155,16 @@ ul,li {
     background: var(--main-back-color);
     padding: 25px 50px;
     border-radius: 3px;
-    transition: all 1s;
+    /* transition: all 1s; */
 }
 
+.regBox {
+    position: absolute;
+    transform: translateX(805px);
+    top: 30px;
+    overflow: hidden;
+    transition: all 1s;
+}
 /* .registerBox {
     /* display: none;
 } */
@@ -357,3 +366,11 @@ input#check_btn:checked + label:before{
     color: #888;
     font-size: 18px;
 }
+
+/* .activeLate {
+    transition-delay: 0.7s;
+}
+
+.activeFast {
+    transition-delay: 0s;
+} */
