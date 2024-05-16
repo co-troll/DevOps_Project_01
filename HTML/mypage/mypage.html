@@ -7,15 +7,16 @@
     <link rel="stylesheet" href="/team project/CSS/mypage/mypage.css">
 </head>
 <body>
-    <div>
+    <div class="image_head">
         <div class="image_top">
-            <div>이미지 선택</div>
+            <div class="imagechoice">이미지 선택</div>
             <div class="background">
                 <div class="oen">
                     <form method="post" enctype="multipart/form-data">
                         <div class="button">
                             <label for="chooseFile">
-                                👉 CLICK HERE! 👈
+                                <img src="./file-upload-image-icon-removebg-preview.png" class="jinimg">
+                                <div class="upload">이미지 업로드</div>
                             </label>
                         </div>
                         <input type="file" id="chooseFile" name="chooseFile" accept="image/*" onchange="loadFile(this)">
@@ -30,7 +31,7 @@
             <div class="change">
               <label for="">닉네임 변경</label>
               <div class="change2">
-              <input type="text">
+              <input type="text" >
                   <input type="button" class="change_button" value="변경하기">
                 </div>
            </div>

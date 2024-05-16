@@ -1,13 +1,14 @@
 /* 전체를 감싸고있는 top */
 .top{
-    width: 500px;
-    height: 100%;
+    width: 1000px;
+    height: 1000px;
     display: flex;
     justify-content: center;
     align-items: center;
     box-sizing: border-box;
-    display: none;
+    /* display: none; */
 }
+
 
 /* 2번째로 감싸고있는 nickname */
 .nickname{
@@ -46,16 +47,18 @@
     font-size: 13px;
     font-weight: 600;
     color: #b5bac1;
+    margin-right: 20px;
 }
 
 
 /* 닉네임 변경&변경하기 묵여있는 안에 #인풋 */
-.change2 > input:nth-child(1){
-    width: 300px;
-    height: 25px;
+.change2 > input:nth-child(1) {
+    width: 320px;
+    height: 30px;
     background-color: #1E1F22;
-    border-radius: 5px;
+    border-radius: 7px;
     color: #ffff;
+    display: inline;
 }
 
 
@@ -66,8 +69,8 @@
     color: #ffff;
     border-radius: 5px;
     background-color:#5865F2;
+    margin-left: 10px;
 }
-
 
 
 
@@ -111,12 +114,41 @@
 
 
 
+
 /* 이미지 선택하는 css */
+
+/* 이미지 선택하는 젤 큰엄마 */
+.image_head{
+    width: 1000px;
+    height: 1000px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    display: none;
+}
+
+
+/* 두번째 엄마 */
 .image_top{
-    width: 400px;
-    height: 400px;
+    width: 320px;
+    height: 350px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
     background-color: #4c4e54;
     border-radius: 5px;
+}
+
+
+/* 이미지선택 글자만 */
+.imagechoice{
+    color: #ffff;
+    font-weight: 700;
+    font-size: 20px;
+    margin-right: 185px;
+    margin-bottom: 20px;
+    
 }
 
 
@@ -124,15 +156,60 @@
 .background{
     width: 250px;
     height: 250px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     background-color: #313338;
     border-radius: 5px;
+    margin-bottom: 30px;
 }
 
+/* button이랑 같은 원형틀잡아줌 */
 .oen{
-    width: 200px;
-    height: 200px;
+    width: 170px;
+    height: 170px;
     background-color: #5865F2;
     border-radius: 100px;
- 
+    margin-bottom: 30px;
+}
+
+/* label 스타일 조정 */
+.button {
+    display: flex;
+    justify-content: center;
+    width: 170px;
+    height: 170px;
+    background-color: #5865F2;
+    border-radius: 100px;
+    margin-bottom: 30px;
+}
+
+label {
+    cursor: pointer;
+    font-size: 1em;
+}
+
+.jinimg{
+    width: 30px;
+    height: 30px;
+    margin-left: 37px;
+    margin-top: 72px;
+    border-radius: 7px;
+    filter: invert();
+    border: none;
+}
+
+/*  input 숨기기 */
+#chooseFile {
+    visibility: hidden;
+}
+
+/* 업로드 글씨 */
+.upload{
+    color: #b5bac1;
+    display: flex;
+    justify-content: end;
+    margin-top: 82px;
+    font-weight: 700;
 
 }
