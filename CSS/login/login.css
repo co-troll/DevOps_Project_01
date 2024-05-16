@@ -136,12 +136,21 @@ ul,li {
 .loginBtn {
     width: 300px;
     height: 35px;
-    background: #5864F2;
+    background: #5864f2;
     border: 0;
     color: #fff;
     border-radius: 3px;
     margin-bottom: 5px;
     cursor: pointer;
+}
+
+.loginBtn:hover {
+    background: rgba(88, 100, 242, 0.7);
+}
+
+.click:hover{
+    background: rgba(88, 100, 242, 0.4);
+    transition: 0.2s;
 }
 
 .registerText {
@@ -317,6 +326,15 @@ ul,li {
     border-radius: 3px;
     margin-bottom: 5px;
     cursor: pointer;
+}
+
+.regBtn:hover {
+    background: rgba(88, 100, 242, 0.7);
+}
+
+.click:hover{
+    background: rgba(88, 100, 242, 0.4);
+    transition: 0.2s;
 }
 
 .checkBoxInput {

@@ -114,6 +114,11 @@ regBtn.addEventListener('click', function() { // 회원가입 버튼 누를시 �
     localStorage.setItem('User', JSON.stringify(userArray));
     alert('회원가입이 완료되었습니다.');
 
+    document.querySelector('.regidInput').value = "";
+    document.querySelector('.regPasswordInput').value = "";
+    document.querySelector('.passwordreInput').value = "";
+    document.querySelector('.nicknameInput').value = "";
+    
     let loginbox = document.querySelector('#rightInfoBox');
     loginbox.style.transform = 'translateX(0px)';
     loginbox.style.transitionDelay = '0.4s'
@@ -123,6 +128,7 @@ regBtn.addEventListener('click', function() { // 회원가입 버튼 누를시 �
     rightregBox.style.transitionDelay = '0s'
 });
 
+
 // 로그인 버튼을 클릭 했을때 로컬스토리지 값 먼저 비교 후, true면 세션스토리지에 그 로컬스토리지 값과 같은것을 Input.value로 저장후 이동
 
 const loginBtn = document.querySelector('.loginBtn');
@@ -130,13 +136,22 @@ const loginBtn = document.querySelector('.loginBtn');
 loginBtn.addEventListener('click', function(){ // 로컬스토리지 id, password값과 id, password input값이 같으면 sessionStorage에 id input값을 저장후 메인페이지로 넘어가게 할것.
     let IdInput = document.querySelector('.idInput').value;
     let PasswordInput = document.querySelector('.passwordInput').value;
-
     if((userArray.find(user => user.id === IdInput)) && (userArray.find(user => user.password === PasswordInput))){
         sessionStorage.setItem('login', IdInput);
         alert('로그인 완료');
-        location.href('board.html');
+        document.querySelector('.idInput').value = "";
+        document.querySelector('.passwordInput').value = "";
+        // location.href('board.html');
     }
 });
+
+loginBtn.addEventListener('mousedown', function(){
+    loginBtn.classList.add('click');
+})
+
+loginBtn.addEventListener('mouseup', function(){
+    loginBtn.classList.remove('click');
+})
 
 let checkbox = document.querySelector('#check_btn')
 
@@ -146,4 +161,12 @@ checkbox.addEventListener('click', function() {
     }else{
         regBtn.disabled = true
     }
+})
+
+regBtn.addEventListener('mousedown', function(){
+    regBtn.classList.add('click');
+})
+
+regBtn.addEventListener('mouseup', function(){
+    regBtn.classList.remove('click');
 })
