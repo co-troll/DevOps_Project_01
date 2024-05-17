@@ -77,6 +77,7 @@ ul,li {
     padding-left: 3px;
 }
 
+
 .idInput {
     width: 300px;
     height: 35px;
@@ -91,7 +92,9 @@ ul,li {
 .idInput:focus {
     outline: none;
 }
-
+.password_box{
+    position: relative;
+}
 
 .passwordInputBox > p:nth-child(1){
     margin-bottom: 5px;
@@ -102,10 +105,18 @@ ul,li {
     color:#fff;
 }
 
-.passwordInputBox > p > label::after {
+.passwordInputBox > p > label:nth-child(1)::after {
     content: "*";
     color: #F23F42;
     padding-left: 3px;
+}
+.eye_image {
+    position: absolute;
+    color: #fff;
+    right: 10px;
+    top: 7px;
+    cursor: pointer;
+    filter: invert(0.4);
 }
 
 .passwordInput{
