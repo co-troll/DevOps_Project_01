@@ -7,14 +7,17 @@
     <link rel="stylesheet" href="../../CSS/main.css">
     <link rel="stylesheet" href="../../CSS/board/board.css">
     <link rel="stylesheet" href="../../CSS/board/category-popup.css">
+    <link rel="stylesheet" href="../../CSS/board/board-popup.css">
 </head>
 <body>
     <div id="container"> <!-- 전체 -->
         <div id="category">
             <ul>
-                <li class="category-box" draggable="true"><div class="category-img">1</div></li>
+                <li class="category-box" draggable="true">
+                    <div class="category-img">1</div>
+                </li>
             </ul>
-            <div class="category-box category-create-btn">
+            <div class="category-create-btn">
                 <div class="category-create-img">
                     <svg class="addButtonIcon_d9a52c" aria-hidden="true" role="img" xmlns="http://www.w3.org/2000/svg" width="28" height="28" fill="none" viewBox="0 0 24 24"><path fill="currentColor" d="M13 6a1 1 0 1 0-2 0v5H6a1 1 0 1 0 0 2h5v5a1 1 0 1 0 2 0v-5h5a1 1 0 1 0 0-2h-5V6Z" class=""></path></svg>
                 </div> <!-- 카테고리 추가 -->
@@ -24,9 +27,14 @@
             <div id="sideBoard"> <!-- 사이드바 -->
                 <div class="board-list-box"> <!-- 게시판리스트 -->
                     <div class="category-name"> <!-- 카테고리칸 -->
-                        <h2>Test</h2>
-                        <div class="category-delete">
-                            <svg class="icon__0bfbf" aria-hidden="true" role="img" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 24 24"><path fill="currentColor" d="M14.25 1c.41 0 .75.34.75.75V3h5.25c.41 0 .75.34.75.75v.5c0 .41-.34.75-.75.75H3.75A.75.75 0 0 1 3 4.25v-.5c0-.41.34-.75.75-.75H9V1.75c0-.41.34-.75.75-.75h4.5Z" class=""></path><path fill="currentColor" fill-rule="evenodd" d="M5.06 7a1 1 0 0 0-1 1.06l.76 12.13a3 3 0 0 0 3 2.81h8.36a3 3 0 0 0 3-2.81l.75-12.13a1 1 0 0 0-1-1.06H5.07ZM11 12a1 1 0 1 0-2 0v6a1 1 0 1 0 2 0v-6Zm3-1a1 1 0 0 1 1 1v6a1 1 0 1 1-2 0v-6a1 1 0 0 1 1-1Z" clip-rule="evenodd" class=""></path></svg>
+                        <h2></h2>
+                        <div class="category-icons">
+                            <div class="category-setting">
+                                <svg class="actionIcon_b149a2" aria-hidden="true" role="img" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 24 24"><path fill="currentColor" fill-rule="evenodd" d="M10.56 1.1c-.46.05-.7.53-.64.98.18 1.16-.19 2.2-.98 2.53-.8.33-1.79-.15-2.49-1.1-.27-.36-.78-.52-1.14-.24-.77.59-1.45 1.27-2.04 2.04-.28.36-.12.87.24 1.14.96.7 1.43 1.7 1.1 2.49-.33.8-1.37 1.16-2.53.98-.45-.07-.93.18-.99.64a11.1 11.1 0 0 0 0 2.88c.06.46.54.7.99.64 1.16-.18 2.2.19 2.53.98.33.8-.14 1.79-1.1 2.49-.36.27-.52.78-.24 1.14.59.77 1.27 1.45 2.04 2.04.36.28.87.12 1.14-.24.7-.95 1.7-1.43 2.49-1.1.8.33 1.16 1.37.98 2.53-.07.45.18.93.64.99a11.1 11.1 0 0 0 2.88 0c.46-.06.7-.54.64-.99-.18-1.16.19-2.2.98-2.53.8-.33 1.79.14 2.49 1.1.27.36.78.52 1.14.24.77-.59 1.45-1.27 2.04-2.04.28-.36.12-.87-.24-1.14-.96-.7-1.43-1.7-1.1-2.49.33-.8 1.37-1.16 2.53-.98.45.07.93-.18.99-.64a11.1 11.1 0 0 0 0-2.88c-.06-.46-.54-.7-.99-.64-1.16.18-2.2-.19-2.53-.98-.33-.8.14-1.79 1.1-2.49.36-.27.52-.78.24-1.14a11.07 11.07 0 0 0-2.04-2.04c-.36-.28-.87-.12-1.14.24-.7.96-1.7 1.43-2.49 1.1-.8-.33-1.16-1.37-.98-2.53.07-.45-.18-.93-.64-.99a11.1 11.1 0 0 0-2.88 0ZM16 12a4 4 0 1 1-8 0 4 4 0 0 1 8 0Z" clip-rule="evenodd" class=""></path></svg>
+                            </div> <!-- 톱니 -->
+                            <div class="category-delete">
+                                <svg class="icon__0bfbf" aria-hidden="true" role="img" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 24 24"><path fill="currentColor" d="M14.25 1c.41 0 .75.34.75.75V3h5.25c.41 0 .75.34.75.75v.5c0 .41-.34.75-.75.75H3.75A.75.75 0 0 1 3 4.25v-.5c0-.41.34-.75.75-.75H9V1.75c0-.41.34-.75.75-.75h4.5Z" class=""></path><path fill="currentColor" fill-rule="evenodd" d="M5.06 7a1 1 0 0 0-1 1.06l.76 12.13a3 3 0 0 0 3 2.81h8.36a3 3 0 0 0 3-2.81l.75-12.13a1 1 0 0 0-1-1.06H5.07ZM11 12a1 1 0 1 0-2 0v6a1 1 0 1 0 2 0v-6Zm3-1a1 1 0 0 1 1 1v6a1 1 0 1 1-2 0v-6a1 1 0 0 1 1-1Z" clip-rule="evenodd" class=""></path></svg>
+                            </div>
                         </div>
                     </div>
                     <div class="board-list"> <!-- 게시판리스트칸 -->
@@ -84,7 +92,7 @@
                         <div src=""  class="user-img"></div>
                         <div class="user-box">
                             <span class="user-name">나</span>
-                            <span class="user-status">온라인</span>
+                            <span class="user-status">유저</span>
                         </div>
                     </div> <!-- 유저프로필 -->
                     <div class="user-icons">
@@ -121,7 +129,7 @@
         </div>
     </div>
 
-    <!-- 카테고리 추가 팝업창 -->
+    <!-- 카테고리 팝업창 -->
     <div class="category-popup">
         <div class="category-popup-box">
             <div class="category-popup-leave-btn">
@@ -142,7 +150,31 @@
             </div>
         </div>
     </div>
+
+    <!-- 게시판 팝업창 -->
+    <div class="board-popup">
+        <div class="board-popup-box">
+            <div class="board-popup-leave-btn">
+                <svg aria-hidden="true" role="img" class="closeIcon__16020" width="24" height="24" viewBox="0 0 24 24"><path fill="currentColor" d="M18.4 4L12 10.4L5.6 4L4 5.6L10.4 12L4 18.4L5.6 20L12 13.6L18.4 20L20 18.4L13.6 12L20 5.6L18.4 4Z"></path></svg>
+            </div>
+            <h2>게시글 쓰기</h2>
+            <div class="board-popup-input-box">
+                <div>게시글 제목</div>
+                <input type="text" class="board-popup-input-title">
+                <div>게시글 내용</div>
+                <textarea class="board-popup-input-content"></textarea>
+            </div>
+            <div class="board-popup-btn-box">
+                <button class="board-popup-create-btn" disabled>만들기</button>
+            </div>
+        </div>
+    </div>
 </body>
 <script src="../../JS/board/category.js"></script>
+<script src="../../JS/board/category-popup.js"></script>
 <script src="../../JS/board/board.js"></script>
+<script src="../../JS/board/board-popup.js"></script>
+
+<script src="../../JS/board/main.js"></script>
+<script src="../../JS/board/eventHandler.js"></script>
 </html>

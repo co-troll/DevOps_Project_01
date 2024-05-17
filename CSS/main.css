@@ -2,6 +2,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: "맑은고딕";
 }
 
 :root {
@@ -22,3 +23,17 @@ ol, ul, li {
 a {
     text-decoration: none;
 } 
+
+::-webkit-scrollbar {
+    width: 10px;  /* 스크롤바의 너비 */
+}
+
+::-webkit-scrollbar-thumb {
+    background:black; /* 스크롤바의 색상 */
+    
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--side-back-color);  /*스크롤바 뒷 배경 색상*/
+}

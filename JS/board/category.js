@@ -1,104 +1,90 @@
-class Category {
-    constructor() {
+// 카테고리 렌더 함수
+const categoryRender = (index) => {
+    const item = categoryArr[index];
+    const categoryBox = document.createElement("li");
+    const categoryImg = document.createElement("div");
+
+    categoryBox.classList.add("category-box");
+    categoryImg.classList.add("category-img");
+
+    categoryBox.draggable = "true";
+
+    categoryImg.innerHTML = item.name;
+    if (item.image == null) {
+    } else {
+        categoryImg.style.color = "transparent";
+        categoryImg.style.backgroundImage = `url(${item.image})`;
     }
 
-    setNo(no) {
-        this.no = no;
-    }
-
-    setName(name) {
-        this.name = name;
-    }
-
-    setImage(img) {
-        this.image = img;
-    }
-
-    getNo() {
-        return this.no;
-    }
-
-    getName() {
-        return this.name;
-    }
-
-    getImage() {
-        return this.image;
-    }
-
+    categoryBox.append(categoryImg);
+    return categoryBox;
 }
 
-const category = new Category();
-
-const leave = () => {
-    document.querySelector(".category-popup").classList.remove("clicked");
-}
-
-document.querySelector(".category-popup-leave-btn").addEventListener("click", leave);
-
-document.onmouseup = (e) => {
-    if (e.target === document.querySelector(".category-popup")) {
-        leave();
-    }
-}
-
-const imgBox = document.querySelector(".category-popup-img-box");
-const imgInput = document.querySelector(".category-popup-input-img");
-imgBox.addEventListener('click', () => {
-    const resetFileList = (target) => {
-        const dataTransfer = new DataTransfer();
-        target.files = dataTransfer.files;
-    };
-    resetFileList(imgInput);
-    imgInput.click()
-});
-
-imgInput.addEventListener("change", (e) => {
-    const img = e.target.files[0];
-    if (img == undefined) 
-        return;
-    
-    const reader = new FileReader();
-    reader.onload = (e) => {
-        const imgBase64 = e.target.result;
-        category.setImage(imgBase64);
-
-        const newImg = document.createElement("img");
-        newImg.src = imgBase64;
-        newImg.style.width = "100%";
-        newImg.style.height = "100%";
-        newImg.draggable = false;
-        newImg.style.borderRadius = "50%";
-        newImg.style.position = "absolute";
-        newImg.style.top = 0;
-
-        imgBox.append(newImg);
-    }
-
-    reader.readAsDataURL(img);
-});
-
-const categoryInput = document.querySelector(".category-popup-input");
-const createBtn = document.querySelector(".category-popup-create-btn");
-categoryInput.addEventListener('keyup', () => {
-    if (categoryInput.value) 
-        createBtn.disabled = false;
-    else 
-        createBtn.disabled = true;
+// 카테고리 생성 버튼
+const categoryCreateBtn = document.querySelector(".category-create-btn");
+categoryCreateBtn.addEventListener("click", (e) => {
+    categoryPopupEnter("create");
 })
 
-createBtn.addEventListener("click", (e) => {
-    category.setNo(categoryArr.length);
-    category.setName(categoryInput.value);
+// 카테고리 수정버튼
+const categoryModifyBtn = document.querySelector(".category-setting");
+categoryModifyBtn.addEventListener("click", (e) => {
+    if (document.querySelector(".selected > div").style.backgroundImage) {
+        const newImg = document.createElement("img");
+        newImg.src = document.querySelector(".selected > div").style.backgroundImage.slice(5, -2);
+        newImg.draggable = false;
+        newImg.classList.add("category-popup-add-img");
+        
+        imgBox.append(newImg);
+    }
+    categoryPopupEnter("modify");
+})
 
-    const no = category.getNo();
-    const name = category.getName();
-    const image = category.getImage()? category.getImage(): null;
-    categoryArr.push({no, name, image});
+// 카테고리 삭제버튼
+const categoryDeleteBtn = document.querySelector(".category-delete");
+categoryDeleteBtn.addEventListener("click", (e) => {
+    if (categoryArr.length == 1) {
+        alert("카테고리가 1개 있으므로 삭제할 수 없어요.");
+        return;
+    }
+    if (document.querySelector(".selected > div").style.backgroundImage) {
+        const newImg = document.createElement("img");
+        newImg.src = document.querySelector(".selected > div").style.backgroundImage.slice(5, -2);
+        newImg.draggable = false;
+        newImg.classList.add("category-popup-add-img");
+        
+        imgBox.append(newImg);
+    }
+    categoryPopupEnter("delete");
+})
+
+// 카테고리 선택 함수
+const categorySelect = (e) => {
+    if (e.target.parentNode.classList.contains("category-box")) {
+        for(let i of document.querySelectorAll(".category-box")) {
+            i.classList.remove("selected");
+        };
+        e.target.parentNode.classList.add("selected");
+        document.querySelector(".category-name > h2").innerHTML = document.querySelector(".selected > div").innerHTML;
+    }
+}
+
+const categoryDrop = (e) => {
+    if(!e.target.classList.contains("category-img") || !dragElement.classList.contains("category-box")) 
+        return
+    const dragNo = dragElement.firstChild.innerHTML;
+    let dragIndex;
+    let dropIndex;
+    for (let i = 0; i < categoryArr.length; i++) {
+        if (categoryArr[i].name == dragNo) 
+            dragIndex = i;
+        if (categoryArr[i].name == e.target.innerHTML) 
+            dropIndex = i;
+    }
+    [categoryArr[dragIndex], categoryArr[dropIndex]] = [categoryArr[dropIndex], categoryArr[dragIndex]];
+    let index = 0;
+    for (let j of categoryArr) 
+            j.no = index++;
     localStorage.setItem("Category", JSON.stringify(categoryArr));
-
-    leave();
-    render();
-    if (categoryArr.length == 1) 
-        init();
-});
+    render(document.querySelector(".category-name > h2").innerHTML);
+}

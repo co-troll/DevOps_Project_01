@@ -31,7 +31,7 @@ html, body {
     align-items: center;
 }
 
-.category-box {
+.category-box, .category-create-btn {
     width: 48px;
     height: 48px;
     margin-bottom: 8px;
@@ -73,6 +73,7 @@ html, body {
     background-size: cover; 
     border-radius: 30%;
     overflow: hidden;
+    white-space : nowrap;
 }
 
 .category-create-img {
@@ -98,7 +99,7 @@ html, body {
 #sideBoard {
     display: flex;
     flex-direction: column;
-    width: 240px;
+    min-width: 240px;
     background-color: var(--side-back-color);
 }
 
@@ -122,9 +123,18 @@ html, body {
     height: 24px;
     font-size: 16px;
     color: white;
+    text-overflow : ellipsis;
+    white-space : nowrap;
+    overflow: hidden;
 }
 
-.category-delete {
+.category-icons {
+    display: flex;
+}
+
+.category-icons > div {
+    margin: 0 2px;
+    cursor: pointer;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -336,6 +346,10 @@ html, body {
     align-items: center;
     margin: 0 8px;
     color: var(--side-text-color);
+}
+
+.board-top-help {
+    cursor: pointer;
 }
 
 .board-top-title {
