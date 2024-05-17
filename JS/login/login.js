@@ -5,11 +5,15 @@ registerBtn.addEventListener('click', function(){ // 회원가입 링크 누를�
 
     let loginbox = document.querySelector('#rightInfoBox');
     loginbox.style.transform = 'translateX(400px)';
-    loginbox.style.transitionDelay = '0s'
+    loginbox.style.transitionDelay = '0s';
 
     let rightregBox = document.querySelector('.regBox');
     rightregBox.style.transform = 'translateX(450px)';
-    rightregBox.style.transitionDelay = '0.4s'
+    rightregBox.style.transitionDelay = '0.4s';
+
+    document.querySelector('.idInput').value = "";
+    document.querySelector('.passwordInput').value = "";
+
     
 })
 
@@ -17,11 +21,16 @@ haveId.addEventListener('click', function(){ // 아이디 이미 있으세요? �
 
     let loginbox = document.querySelector('#rightInfoBox');
     loginbox.style.transform = 'translateX(0px)';
-    loginbox.style.transitionDelay = '0.4s'
+    loginbox.style.transitionDelay = '0.4s';
 
     let rightregBox = document.querySelector('.regBox');
     rightregBox.style.transform = 'translateX(805px)';
-    rightregBox.style.transitionDelay = '0s'
+    rightregBox.style.transitionDelay = '0s';
+
+    document.querySelector('.regidInput').value = "";
+    document.querySelector('.regPasswordInput').value = "";
+    document.querySelector('.passwordreInput').value = "";
+    document.querySelector('.nicknameInput').value = "";
 
 })
 
@@ -29,7 +38,7 @@ haveId.addEventListener('click', function(){ // 아이디 이미 있으세요? �
 const check = document.querySelector('.regPasswordInput');
 const reCheck = document.querySelector('.passwordreInput');
 const mismatchMessage = document.querySelector('.mismatch-message');
-const strongPasswordMessage = document.querySelector('.strong-message'); // 변수명 소문자로 시작
+const strongPasswordMessage = document.querySelector('.strong-message');
 
 function strongPassword(str) {
     return /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/.test(str);
@@ -121,11 +130,11 @@ regBtn.addEventListener('click', function() { // 회원가입 버튼 누를시 �
     
     let loginbox = document.querySelector('#rightInfoBox');
     loginbox.style.transform = 'translateX(0px)';
-    loginbox.style.transitionDelay = '0.4s'
+    loginbox.style.transitionDelay = '0.4s';
 
     let rightregBox = document.querySelector('.regBox');
     rightregBox.style.transform = 'translateX(805px)';
-    rightregBox.style.transitionDelay = '0s'
+    rightregBox.style.transitionDelay = '0s';
 });
 
 
@@ -153,13 +162,13 @@ loginBtn.addEventListener('mouseup', function(){
     loginBtn.classList.remove('click');
 })
 
-let checkbox = document.querySelector('#check_btn')
+let checkbox = document.querySelector('#check_btn');
 
 checkbox.addEventListener('click', function() {
     if(checkbox.checked){
-        regBtn.disabled = false
+        regBtn.disabled = false;
     }else{
-        regBtn.disabled = true
+        regBtn.disabled = true;
     }
 })
 
