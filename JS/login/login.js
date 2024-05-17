@@ -83,10 +83,11 @@ reCheck.onkeyup = function () { // 비밀번호 확인 이벤트 함수
 let userArray = JSON.parse(localStorage.getItem('User')) || [];
 
 class User {
-    constructor(id, password, nick) {
+    constructor(id, password, nick, image) {
         this.id = id;
         this.password = password;
         this.nick = nick;
+        this.image = image;
     }
 }
 
@@ -96,7 +97,7 @@ regBtn.addEventListener('click', function() { // 회원가입 버튼 누를시 �
     let regIdInput = document.querySelector('.regidInput').value;
     let regPasswordInput = document.querySelector('.regPasswordInput').value;
     let nicknameInput = document.querySelector('.nicknameInput').value;
-
+    let image = null; 
 
     // ID, nickname 빈칸 체크
     if(regIdInput === ''){
@@ -116,7 +117,7 @@ regBtn.addEventListener('click', function() { // 회원가입 버튼 누를시 �
         return;
     }
 
-    let userInfo = new User(regIdInput, regPasswordInput, nicknameInput);
+    let userInfo = new User(regIdInput, regPasswordInput, nicknameInput, image);
 
     userArray.push(userInfo);
 
