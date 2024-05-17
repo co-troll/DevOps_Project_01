@@ -119,6 +119,16 @@
 
 /* 이미지 선택하는 css */
 
+
+.first_top{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+}
+
 /* 이미지 선택하는 젤 큰엄마 */
 #image_head{
     width: 400px;
@@ -128,7 +138,7 @@
     align-items: center;
     position: absolute;
     margin-top: 353px;
-    margin-left: 425px;
+    margin-left: 702px;
 }
 
 .myimage{
