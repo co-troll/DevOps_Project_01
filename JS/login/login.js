@@ -5,11 +5,15 @@ registerBtn.addEventListener('click', function(){ // 회원가입 링크 누를�
 
     let loginbox = document.querySelector('#rightInfoBox');
     loginbox.style.transform = 'translateX(400px)';
-    loginbox.style.transitionDelay = '0s'
+    loginbox.style.transitionDelay = '0s';
 
     let rightregBox = document.querySelector('.regBox');
     rightregBox.style.transform = 'translateX(450px)';
-    rightregBox.style.transitionDelay = '0.4s'
+    rightregBox.style.transitionDelay = '0.4s';
+
+    document.querySelector('.idInput').value = "";
+    document.querySelector('.passwordInput').value = "";
+
     
 })
 
@@ -17,11 +21,16 @@ haveId.addEventListener('click', function(){ // 아이디 이미 있으세요? �
 
     let loginbox = document.querySelector('#rightInfoBox');
     loginbox.style.transform = 'translateX(0px)';
-    loginbox.style.transitionDelay = '0.4s'
+    loginbox.style.transitionDelay = '0.4s';
 
     let rightregBox = document.querySelector('.regBox');
     rightregBox.style.transform = 'translateX(805px)';
-    rightregBox.style.transitionDelay = '0s'
+    rightregBox.style.transitionDelay = '0s';
+
+    document.querySelector('.regidInput').value = "";
+    document.querySelector('.regPasswordInput').value = "";
+    document.querySelector('.passwordreInput').value = "";
+    document.querySelector('.nicknameInput').value = "";
 
 })
 
@@ -29,7 +38,7 @@ haveId.addEventListener('click', function(){ // 아이디 이미 있으세요? �
 const check = document.querySelector('.regPasswordInput');
 const reCheck = document.querySelector('.passwordreInput');
 const mismatchMessage = document.querySelector('.mismatch-message');
-const strongPasswordMessage = document.querySelector('.strong-message'); // 변수명 소문자로 시작
+const strongPasswordMessage = document.querySelector('.strong-message');
 
 function strongPassword(str) {
     return /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/.test(str);
@@ -74,10 +83,11 @@ reCheck.onkeyup = function () { // 비밀번호 확인 이벤트 함수
 let userArray = JSON.parse(localStorage.getItem('User')) || [];
 
 class User {
-    constructor(id, password, nick) {
+    constructor(id, password, nick, image) {
         this.id = id;
         this.password = password;
         this.nick = nick;
+        this.image = image;
     }
 }
 
@@ -87,7 +97,7 @@ regBtn.addEventListener('click', function() { // 회원가입 버튼 누를시 �
     let regIdInput = document.querySelector('.regidInput').value;
     let regPasswordInput = document.querySelector('.regPasswordInput').value;
     let nicknameInput = document.querySelector('.nicknameInput').value;
-
+    let image = null; 
 
     // ID, nickname 빈칸 체크
     if(regIdInput === ''){
@@ -107,21 +117,27 @@ regBtn.addEventListener('click', function() { // 회원가입 버튼 누를시 �
         return;
     }
 
-    let userInfo = new User(regIdInput, regPasswordInput, nicknameInput);
+    let userInfo = new User(regIdInput, regPasswordInput, nicknameInput, image);
 
     userArray.push(userInfo);
 
     localStorage.setItem('User', JSON.stringify(userArray));
     alert('회원가입이 완료되었습니다.');
 
+    document.querySelector('.regidInput').value = "";
+    document.querySelector('.regPasswordInput').value = "";
+    document.querySelector('.passwordreInput').value = "";
+    document.querySelector('.nicknameInput').value = "";
+    
     let loginbox = document.querySelector('#rightInfoBox');
     loginbox.style.transform = 'translateX(0px)';
-    loginbox.style.transitionDelay = '0.4s'
+    loginbox.style.transitionDelay = '0.4s';
 
     let rightregBox = document.querySelector('.regBox');
     rightregBox.style.transform = 'translateX(805px)';
-    rightregBox.style.transitionDelay = '0s'
+    rightregBox.style.transitionDelay = '0s';
 });
+
 
 // 로그인 버튼을 클릭 했을때 로컬스토리지 값 먼저 비교 후, true면 세션스토리지에 그 로컬스토리지 값과 같은것을 Input.value로 저장후 이동
 
@@ -130,20 +146,37 @@ const loginBtn = document.querySelector('.loginBtn');
 loginBtn.addEventListener('click', function(){ // 로컬스토리지 id, password값과 id, password input값이 같으면 sessionStorage에 id input값을 저장후 메인페이지로 넘어가게 할것.
     let IdInput = document.querySelector('.idInput').value;
     let PasswordInput = document.querySelector('.passwordInput').value;
-
     if((userArray.find(user => user.id === IdInput)) && (userArray.find(user => user.password === PasswordInput))){
         sessionStorage.setItem('login', IdInput);
         alert('로그인 완료');
-        location.href('board.html');
+        document.querySelector('.idInput').value = "";
+        document.querySelector('.passwordInput').value = "";
+        // location.href('board.html');
     }
 });
 
-let checkbox = document.querySelector('#check_btn')
+loginBtn.addEventListener('mousedown', function(){
+    loginBtn.classList.add('click');
+})
+
+loginBtn.addEventListener('mouseup', function(){
+    loginBtn.classList.remove('click');
+})
+
+let checkbox = document.querySelector('#check_btn');
 
 checkbox.addEventListener('click', function() {
     if(checkbox.checked){
-        regBtn.disabled = false
+        regBtn.disabled = false;
     }else{
-        regBtn.disabled = true
+        regBtn.disabled = true;
     }
+})
+
+regBtn.addEventListener('mousedown', function(){
+    regBtn.classList.add('click');
+})
+
+regBtn.addEventListener('mouseup', function(){
+    regBtn.classList.remove('click');
 })
