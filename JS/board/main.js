@@ -1,11 +1,11 @@
-const loginUser = JSON.parse(localStorage.getItem("User")).filter((i) => i.id == sessionStorage.getItem("login"))[0] || { "id": "guest", "password": 111, "nick": "guest", "image": null };
+const loginUser = JSON.parse(localStorage.getItem("User")).filter((i) => i.id == sessionStorage.getItem("login"))[0] || { "id": "guest", "password": 111, "nick": "게스트", "image": null };
 const categoryArr = JSON.parse(localStorage.getItem("Category")) || [];
 const boardArr = JSON.parse(localStorage.getItem("Board")) || [];
 
 
 // 랜더 함수
 const render = (selectedCategory = null) => {
-    userIcon();
+    userInit();
     const categoryList = document.querySelector("#category > ul");
     const boardList = document.querySelector(".board-list > ul");
     categoryList.innerHTML = "";
@@ -36,8 +36,11 @@ const render = (selectedCategory = null) => {
     if (arrByCategory().length < 1) {
         document.querySelector(".board-top-title").innerHTML = "";
         document.querySelector(".board-content").innerHTML = "";
+        document.querySelector(".board-top-info").style.display = "none";
+        document.querySelector(".board-info").style.display = "none";
         return
     }
+    document.querySelector(".board-top-info").style.display = "flex";
     document.querySelector('.board-list > ul').firstElementChild.firstElementChild.firstElementChild.classList.add("board-select");
     document.querySelector(".board-top-title").innerHTML = document.querySelector(".board-select > .board-title").innerHTML;
 
@@ -66,6 +69,8 @@ const init = () => {
     if (arrByCategory().length < 1) {
         document.querySelector(".board-top-title").innerHTML = "";
         document.querySelector(".board-content").innerHTML = "";
+        document.querySelector(".board-top-info").style.display = "none";
+        document.querySelector(".board-info").style.display = "none";
         return
     }
     document.querySelector('.board-list > ul').firstElementChild.firstElementChild.firstElementChild.classList.add("board-select");

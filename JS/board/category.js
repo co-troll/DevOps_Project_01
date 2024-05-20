@@ -60,6 +60,8 @@ categoryDeleteBtn.addEventListener("click", (e) => {
 
 // 카테고리 선택 함수
 const categorySelect = (e) => {
+    if (e.target.parentNode.classList.contains("selected")) 
+        return;
     if (e.target.parentNode.classList.contains("category-box")) {
         render(e.target.innerHTML);
         // for(let i of document.querySelectorAll(".category-box")) {

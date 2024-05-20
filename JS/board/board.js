@@ -46,11 +46,12 @@ const boardRender = (arr) => {
         </li>
         <li class="board-info-field">
             <div class="board-info-title">조회수</div>
-            <div class="board-info-content">${arr.view}</div>
+            <div class="board-info-content">${arr.view++}</div>
         </li>
     </ul>
     <div class="board-info-footer">작성일 : ${arr.date}</div>
     `
+    localStorage.setItem("Board", JSON.stringify(boardArr));
 }
 
 // 현재 선택된 카테고리번호 탐색 함수 
@@ -74,24 +75,6 @@ boardCreateBtn.addEventListener("click", (e) => {
     boardPopupEnter("create");
 })
 
-// // 카테고리 삭제버튼
-// const categoryDeleteBtn = document.querySelector(".category-delete");
-// categoryDeleteBtn.addEventListener("click", (e) => {
-//     if (categoryArr.length == 1) {
-//         alert("카테고리가 1개 있으므로 삭제할 수 없어요.");
-//         return;
-//     }
-//     if (document.querySelector(".selected > div").style.backgroundImage) {
-//         const newImg = document.createElement("img");
-//         newImg.src = document.querySelector(".selected > div").style.backgroundImage.slice(5, -2);
-//         newImg.draggable = false;
-//         newImg.classList.add("category-popup-add-img");
-        
-//         imgBox.append(newImg);
-//     }
-//     categoryPopupEnter("delete");
-// })
-
 // 게시글 버튼 이벤트 부여 함수 
 const boardBtnEvent = () => {
     // 게시글 수정 버튼
@@ -113,6 +96,8 @@ const boardBtnEvent = () => {
 }
 // 게시판 선택 함수
 const boardSelect = (e) => {
+    if (e.target.classList.contains("board-select"))
+        return;
     if (e.target.classList.contains("board-box")) {
         for (let i of document.querySelectorAll(".board-box")) {
             i.classList.remove("board-select");

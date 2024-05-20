@@ -32,3 +32,15 @@ document.addEventListener("drop", (e) => {
     categoryDrop(e);
     boardDrop(e);
 })
+
+document.addEventListener("keydown", (e) => {
+    let key = e.key || e.keyCode;
+    if (key === "Escape" || key === 27) {
+        document.querySelector(".category-popup").classList.remove("clicked");
+        document.querySelector(".board-popup").classList.remove("clicked"); 
+    }
+
+    if (key === "Enter" || key === 13) {
+
+    }
+})
