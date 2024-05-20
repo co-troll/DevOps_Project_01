@@ -276,6 +276,16 @@ body {
     justify-content: center;
     color: rgba(226, 225, 238, 0.7);
 }
+.board_list > ul > a {
+  width: 100px;
+  height: 50px;
+  padding: 15px 0px 0 0px;
+  color: rgba(226, 225, 238, 0.7);
+  text-decoration-line: none;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
 
 .board_list > ul > li:nth-child(3){
     width: 200px;
@@ -417,3 +427,9 @@ body {
     color: #fff;
     font-size: 12px;
   }
+
+/* .view_up {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+} */

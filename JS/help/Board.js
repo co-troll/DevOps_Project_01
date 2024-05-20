@@ -9,12 +9,13 @@ createList.onclick = function () {
 function render (){
     let listCreate = document.querySelector('.board_list')
     let show = JSON.parse(localStorage.getItem('Board'));
-
+    
     if(show !== null){
         for(let i = 0; i < show.length; i++){
             let list_ul = document.createElement('ul');
             let list_no = document.createElement('li');
-            let list_title = document.createElement('li');
+            let list_title = document.createElement('a');
+            list_title.classList.add('view_up')
             let list_writer = document.createElement('li');
             let list_view = document.createElement('li');
             let list_date = document.createElement('li');
@@ -27,9 +28,15 @@ function render (){
             list_date.innerHTML = show[i].date; // 날짜 출력
             list_writer.innerHTML = show[i].nick; // 작성자 출력
             list_view.innerHTML = show[i].view;
+
+            list_title.onclick = function(){
+                show[i].view = ++show[i].view;
+                localStorage.setItem('Board', JSON.stringify(show));
+            }
+            // a 태그를 클릭했을때 로컬스토리지 view 값이 1증가하게 해야됨.
+            list_title.href = `../../HTML/help/Detail.html?writeNum=${i + 1}`
         }
     }
-
     let loginID = sessionStorage.getItem('login');
     let localArray = JSON.parse(localStorage.getItem('User'));
     let showID = document.querySelector('.login_id');
@@ -46,7 +53,7 @@ render();
 
 let createWrite = document.querySelector('.createList');
 
-createWrite.onclick = () => {
+createWrite.onclick = () => { // 문의글 작성 버튼 누를시 onclick 작동
     if(sessionStorage.getItem('login') === null){
         alert('로그인이 되지 않아 게시글을 작성 할 수 없습니다.');
         return;
