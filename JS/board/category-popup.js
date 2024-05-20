@@ -59,7 +59,8 @@ const categoryPopupEnter = (type) => {
 const categoryPopupLeave = () => {
     document.querySelector(".category-popup").classList.remove("clicked");
     categoryInput.value = null;
-    if (imgBox.lastChild == document.querySelector(".category-popup-add-img")) 
+    category.setImage(null)
+    if (imgBox.lastChild == document.querySelector(".category-popup-add-img"))  
         document.querySelector(".category-popup-add-img").remove();
 }
 
@@ -77,8 +78,10 @@ imgBox.addEventListener('click', () => {
 // input 태그 변경 함수
 const imgInput = document.querySelector(".category-popup-input-img");
 imgInput.addEventListener("change", (e) => {
-    if (imgBox.lastChild == document.querySelector(".category-popup-add-img")) 
+    if (imgBox.lastChild == document.querySelector(".category-popup-add-img")) {
         document.querySelector(".category-popup-add-img").remove();
+        category.setImage(null);
+    }
     const img = e.target.files[0];
     if (img == undefined) 
         return;
@@ -151,16 +154,22 @@ const modifyCategory = (e) => {
 const deleteCategory = (e) => {
     
     if (categoryInput.placeholder != categoryInput.value) {
-        categoryDes.innerHTML = "입력 값이 다릅니다.";
+        categoryDes.innerHTML = "일치하지 않습니다.";
         return;
     }
     for (let i = 0; i < categoryArr.length; i++) {
         if (categoryArr[i].name == document.querySelector(".category-name > h2").innerHTML) {
             categoryArr.splice(i, 1);
             let index = 0;
+            for (let j of boardArr) {
+                if (j.categoryNo == i) 
+                    boardArr.splice(j, 1);
+            }
             for (let j of categoryArr) 
                 j.no = index++;
+
             localStorage.setItem("Category", JSON.stringify(categoryArr));
+            localStorage.setItem("Board", JSON.stringify(boardArr));
             render();
             categoryPopupLeave();
             init();

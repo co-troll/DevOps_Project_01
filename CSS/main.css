@@ -16,6 +16,10 @@
 
 }
 
+svg {
+    pointer-events: none;
+}
+
 ol, ul, li {
     list-style: none;
 }

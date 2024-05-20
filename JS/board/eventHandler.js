@@ -1,6 +1,8 @@
 // onmouseup
 document.addEventListener("mouseup", (e) => {
     categorySelect(e);
+    boardSelect(e);
+    boardInfo(e);
 })
 
 // onmousedown
@@ -28,4 +30,5 @@ document.addEventListener("dragover", (e) => {
 document.addEventListener("drop", (e) => {
     e.preventDefault();
     categoryDrop(e);
+    boardDrop(e);
 })

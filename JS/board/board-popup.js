@@ -48,6 +48,7 @@ const boardBtn = document.querySelector(".board-popup-create-btn");
 const boardPopupEnter = (type) => {
     boardBtn.disabled = true;
     document.querySelector(".board-popup").classList.add("clicked");
+    const selectArr = arrByCategory();
     switch (type) {
         case "create":
             boardTitle.innerHTML = "게시글 쓰기";
@@ -58,24 +59,23 @@ const boardPopupEnter = (type) => {
                 createBoard(e);
             }
             break;
-        /* case "modify":
-            boardTitle.innerHTML = "카테고리 수정";
-            popupDes.innerHTML = "이미지 변경"; // 삭제 예정
-            boardTitleInput.placeholder = document.querySelector(".selected > div").innerHTML;
-            boardBtn.innerHTML = "변경";
+        case "modify":
+            boardTitle.innerHTML = "게시글 수정";
+            boardTitleInput.placeholder = selectArr[document.querySelector(".board-select").dataset.index].title;
+            boardContentInput.placeholder = selectArr[document.querySelector(".board-select").dataset.index].content;
+            boardBtn.innerHTML = "수정";
             boardBtn.onclick = (e) => {
-                modifyCategory(e);
+                modifyBoard(e, selectArr[document.querySelector(".board-select").dataset.index]);
             };
             break;
         case "delete":
-            boardTitle.innerHTML = "카테고리 삭제";
-            popupDes.innerHTML = "삭제하시려면 카테고리 이름을 입력해주세요."; // 삭제 예정
-            boardTitleInput.placeholder = document.querySelector(".selected > div").innerHTML;
+            boardTitleInput.placeholder = selectArr[document.querySelector(".board-select").dataset.index].title;
+            boardContentInput.placeholder = "삭제하시려면 게시글 제목을 제목란에 입력해주세요.";
             boardBtn.innerHTML = "삭제";
             boardBtn.onclick = (e) => {
-                deleteCategory(e);
+                deleteBoard(e, selectArr[document.querySelector(".board-select").dataset.index]);
             };
-            break; */
+            break;
     }
 }
 
@@ -84,42 +84,6 @@ const boardPopupLeave = () => {
     boardTitleInput.value = null;
     boardContentInput.value = null;
 }
-
-// input 태그 대신 클릭될 요소
-/* const imgBox = document.querySelector(".category-popup-img-box");
-imgBox.addEventListener('click', () => {
-    const resetFileList = (target) => {
-        const dataTransfer = new DataTransfer();
-        target.files = dataTransfer.files;
-    };
-    resetFileList(imgInput);
-    imgInput.click()
-});
-
-// input 태그 변경 함수
-const imgInput = document.querySelector(".category-popup-input-img");
-imgInput.addEventListener("change", (e) => {
-    if (imgBox.lastChild == document.querySelector(".category-popup-add-img")) 
-        document.querySelector(".category-popup-add-img").remove();
-    const img = e.target.files[0];
-    if (img == undefined) 
-        return;
-    
-    const reader = new FileReader();
-    reader.onload = (e) => {
-        const imgBase64 = e.target.result;
-        category.setImage(imgBase64);
-
-        const newImg = document.createElement("img");
-        newImg.src = imgBase64;
-        newImg.draggable = false;
-        newImg.classList.add("category-popup-add-img");
-
-        imgBox.append(newImg);
-    }
-
-    reader.readAsDataURL(img);
-}); */
 
 // 게시글 생성 함수
 const createBoard = (e) => {
@@ -145,75 +109,41 @@ const createBoard = (e) => {
     localStorage.setItem("Board", JSON.stringify(boardArr));
     boardPopupLeave();
     render(document.querySelector(".selected > div").innerHTML);
-    return;
-    for(let i of document.querySelectorAll(".category-box")) {
-        if (i.firstChild.innerHTML == name) {
-            i.classList.add("selected");
-            continue;
-        }
-        i.classList.remove("selected");
-    };
-
-    document.querySelector(".category-name > h2").innerHTML = document.querySelector(".selected > div").innerHTML;
     console.log("create");
 }
 
-/* // 카테고리 변경 함수
-const modifyCategory = (e) => {
-    for (let i of boardArr) {
-        if (i.name == boardTitleInput.value && boardTitleInput.placeholder != boardTitleInput.value) {
-            popupDes.innerHTML = "존재하는 카테고리 이름입니다."; // 삭제 예정
-            return;
-        }
-    }
-    for (let i of boardArr) {
-        const selected = document.querySelector(".selected > div");
-        if (i.name == selected.innerHTML) {
-            category.setName(boardTitleInput.value);
-            i.name = boardTitleInput.value;
-            i.image = category.getImage()? category.getImage(): i.image;
-        }
-
-    }
-    
-    localStorage.setItem("Category", JSON.stringify(boardArr));
-    
-    categoryPopupLeave();
-    render();
-    for(let i of document.querySelectorAll(".category-box")) {
-        if (i.firstChild.innerHTML == category.getName()) {
-            i.classList.add("selected");
-            continue;
-        }
-        i.classList.remove("selected");
-    };
-    
-    document.querySelector(".category-name > h2").innerHTML = document.querySelector(".selected > div").innerHTML;
+// 게시글 변경 함수
+const modifyBoard = (e, arr) => {
+    arr.title = boardTitleInput.value;
+    arr.content = boardContentInput.value;
+    localStorage.setItem("Board", JSON.stringify(boardArr));
+    boardPopupLeave();
+    render(document.querySelector(".selected > div").innerHTML);
     console.log("modify");
 }
 
 // 카테고리 삭제 함수
-const deleteCategory = (e) => {
-    
+const deleteBoard = (e, arr) => {
     if (boardTitleInput.placeholder != boardTitleInput.value) {
-        popupDes.innerHTML = "입력 값이 다릅니다."; // 삭제 예정
+        boardContentInput.value = "";
+        boardContentInput.placeholder = "일치하지 않습니다.";
         return;
     }
     for (let i = 0; i < boardArr.length; i++) {
-        if (boardArr[i].name == document.querySelector(".category-name > h2").innerHTML) {
+        if (boardArr[i] == arr) {
+            console.log(11);
             boardArr.splice(i, 1);
             let index = 0;
-            for (let j of boardArr) 
+            for (let j of arrByCategory()) 
                 j.no = index++;
-            localStorage.setItem("Category", JSON.stringify(boardArr));
-            render();
-            categoryPopupLeave();
-            init();
+            localStorage.setItem("Board", JSON.stringify(boardArr));
+            boardPopupLeave();
+            render(document.querySelector(".selected > div").innerHTML);
+            console.log("delete");
             return;
         }
     }
-    console.log("delete");
-} */
+}
 
 
 // input의 값 존재 여부 확인

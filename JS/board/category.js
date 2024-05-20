@@ -61,11 +61,12 @@ categoryDeleteBtn.addEventListener("click", (e) => {
 // 카테고리 선택 함수
 const categorySelect = (e) => {
     if (e.target.parentNode.classList.contains("category-box")) {
-        for(let i of document.querySelectorAll(".category-box")) {
-            i.classList.remove("selected");
-        };
-        e.target.parentNode.classList.add("selected");
-        document.querySelector(".category-name > h2").innerHTML = document.querySelector(".selected > div").innerHTML;
+        render(e.target.innerHTML);
+        // for(let i of document.querySelectorAll(".category-box")) {
+        //     i.classList.remove("selected");
+        // };
+        // e.target.parentNode.classList.add("selected");
+        // document.querySelector(".category-name > h2").innerHTML = document.querySelector(".selected > div").innerHTML;
     }
 }
 
@@ -83,8 +84,18 @@ const categoryDrop = (e) => {
     }
     [categoryArr[dragIndex], categoryArr[dropIndex]] = [categoryArr[dropIndex], categoryArr[dragIndex]];
     let index = 0;
-    for (let j of categoryArr) 
-            j.no = index++;
+    for (let i of categoryArr) 
+            i.no = index++;
+
+    console.log(dragIndex, dropIndex);
     localStorage.setItem("Category", JSON.stringify(categoryArr));
+
+    for (let i of boardArr) {
+        if (i.categoryNo == dragIndex)  
+            i.categoryNo = dropIndex;
+        else if (i.categoryNo == dropIndex) 
+            i.categoryNo = dragIndex;
+    }
+    localStorage.setItem("Board", JSON.stringify(boardArr));
     render(document.querySelector(".category-name > h2").innerHTML);
 }
