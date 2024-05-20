@@ -1,12 +1,38 @@
+.container{
+    height: 1000px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.x_imge{
+    width: 50px;
+    height: 50px;
+    position: absolute;
+    top: 12%;
+    right: 30%;
+    filter: invert();
+    cursor: pointer;
+    z-index: 4;
+    
+}
+
+.x_imge:hover{
+    
+    width: 50px;
+    height: 50px;
+    filter: none;
+    /* background-color: #4c4e54; */
+    color: aqua;
+}
+
+
+
+
 /* 전체를 감싸고있는 top */
 #top{
     width: 100%;
-    height: 1000px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    box-sizing: border-box;
-    /* display: none; */
+    height: 100%;
 }
 
 
@@ -15,14 +41,26 @@
     width: 100%;
     height: 100%;
     display: flex;
-    justify-content: center;
-    flex: content;
+    /* flex: content; */
     border: 1px solid;
-    align-items: center;
     flex-direction: column;
-    background-color: #313338;
     border-radius: 7px;
+    align-items: center;
+    position:relative;
 }
+
+
+
+
+
+
+
+.cute_imge{
+    width: 150px;
+    height: 150px;
+    
+}
+
 
 
 
@@ -32,44 +70,68 @@
 /* 닉네임 변경과 인풋들을 품고있는 div */
 .change{
     display: flex;
-    margin-top: 275px;
-    flex: content;
     flex-direction: column;
     align-items: center;
-    margin-bottom: 10px;
+    position:absolute;
+    top: 13%;
+    left:37%;
 }
 
 
 /* 닉네임 변경 */
 .change > label{
-    margin: 13px;
-    padding-right: 300px;
     font-size: 13px;
     font-weight: 600;
-    color: #b5bac1;
-    margin-right: 20px;
+    color: #ffffff;
+    position: absolute;
+    left: 2%;
+    top: 64%;
 }
 
 
 /* 닉네임 변경&변경하기 묵여있는 안에 #인풋 */
 .change2 > input:nth-child(1) {
     width: 320px;
-    height: 30px;
+    height: 40px;
     background-color: #1E1F22;
     border-radius: 7px;
     color: #ffff;
     display: inline;
 }
 
+.change2 {
+    margin-top: 20px;
+}
+
+
+
+
+
 
 /* 변경하기 인풋 */
 .change_button{
-    width: 70px;
-    height: 25px;
-    color: #ffff;
+    width: 75px;
+    height: 30px;
+    color: #ffffff;
+    font-weight: 500;
     border-radius: 5px;
-    background-color:#5865F2;
-    margin-left: 10px;
+    background-color:#feba00f4;
+}
+
+
+
+
+
+/*  미리보기 이미지 들어가는거와 프로필변경하기 묶은거 */
+.oen2_pofile{
+    width: 500px;
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    bottom: 40%;
+    left: 40%;
+    align-content: center;
+    justify-content: space-around;
 }
 
 
@@ -78,11 +140,10 @@
 
 /* 프로필 사진 추가를 품고있는 div */
 .profile{
-    margin-bottom: 170px;
-    padding-right: 130px;
     display: flex;
     flex-direction: column;
-    
+    position: absolute;
+    left: 40%;
 }
 
 
@@ -90,9 +151,9 @@
 .profile > label{
     font-size: 13px;
     font-weight: 600;
-    margin-bottom: 10px;
-    color: #b5bac1;
-    margin: 10px;
+    color: #ffffff;
+    position: absolute;
+    bottom:110%;
     
 }
 
@@ -101,10 +162,10 @@
 .profile > input {
     width: 160px;
     height: 40px;
-    color: #ffff;
+    color: #ffffff;
     font-size: 15px;
     font-weight: 400;
-    background-color: #5865F2;
+    background-color: #feba00f4;
     border-radius: 7px;
     border: 0;
 }
@@ -117,28 +178,19 @@
 
 
 
-/* 이미지 선택하는 css */
 
-
-.first_top{
-    width: 100%;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: absolute;
-}
 
 /* 이미지 선택하는 젤 큰엄마 */
 #image_head{
-    width: 400px;
-    height: 400px;
+    width: 300px;
+    height: 300px;
     display: flex;
     justify-content: center;
     align-items: center;
     position: absolute;
-    margin-top: 353px;
-    margin-left: 702px;
+    top: 42%;
+    left: 34%;
+    z-index: -1;
 }
 
 .myimage{
@@ -169,8 +221,6 @@
     color: #ffff;
     font-weight: 700;
     font-size: 20px;
-    margin-right: 185px;
-    margin-bottom: 20px;
     
 }
 
@@ -184,7 +234,6 @@
     align-items: center;
     background-color: #313338;
     border-radius: 5px;
-    margin-bottom: 30px;
 }
 
 /* button이랑 같은 원형틀잡아줌 */
@@ -193,7 +242,6 @@
     height: 170px;
     background-color: #5865F2;
     border-radius: 100px;
-    margin-bottom: 30px;
 }
 
 /* label 스타일 조정 */
@@ -204,7 +252,6 @@
     height: 170px;
     background-color: #5865F2;
     border-radius: 100px;
-    margin-bottom: 30px;
 }
 
 label {
@@ -215,11 +262,12 @@ label {
 .jinimg{
     width: 30px;
     height: 30px;
-    margin-left: 37px;
-    margin-top: 72px;
     border-radius: 7px;
     filter: invert();
     border: none;
+    position: absolute;
+    top: 50%;
+    left: 46%;
 }
 
 /*  input 숨기기 */
@@ -232,8 +280,12 @@ label {
     color: #b5bac1;
     display: flex;
     justify-content: end;
-    margin-top: 82px;
     font-weight: 700;
+    position: absolute;
+    top: 52%;
+    left: 36%;
+    display: none;
+    
 
 }
 
@@ -241,20 +293,19 @@ label {
 /* //////////////// */
 
 .upload2{
-    color: #b5bac1;
-    /* display: flex; */
+    color: rgb(255, 255, 255);
     justify-content: end;
-    /* margin-top: 180px; */
-    /* margin-right: 53px; */
     font-weight: 700;
+    text-align: center;
+    position: absolute;
+    bottom:-20%;
+    left: 10%;
 }
 
 .jinimg2{
 
     width: 30px;
     height: 30px;
-    /* margin-left: 70px; */
-    /* margin-top: 72px; */
     border-radius: 7px;
     filter: invert();
     border: none;
@@ -268,26 +319,22 @@ label {
     flex-direction: column;
     width: 170px;
     height: 170px;
-    background-color: #5865F2;
+    background-color: #feba00f4;
     border-radius: 100px;
-    margin-bottom: 20px;
     align-items: center;
-    padding: 0 0 0 0;
+    overflow:hidden;
 }
 
-.upload2 {
-    margin-left: 50px;
+.button2 > img{
+    width:90px;
+    height:90px;
 }
+
+
 
 
 
 .oen2{
     width: 170px;
-    height: 170px;
-    background-color: #5865F2;
     border-radius: 100px;
-    margin-bottom: 120px;
-    margin-right: 98px;
-    
-    
 }
