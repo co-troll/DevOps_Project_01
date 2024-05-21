@@ -58,8 +58,11 @@ const render = (selectedCategory = null) => {
 // 초기값 정하는 함수
 const init = () => {
     const boardList = document.querySelector(".board-list > ul");
-    if (categoryArr.length < 1) 
+    if (categoryArr.length < 1) {
+        document.querySelector(".board-top-info").style.display = "none";
+        document.querySelector(".board-info").style.display = "none";
         return 
+    }
     document.querySelector('#category > ul').firstChild.classList.add("selected");
     document.querySelector(".category-name > h2").innerHTML = document.querySelector(".selected > div").innerHTML;
     for (let i = 0; i < arrByCategory().length; i++) {

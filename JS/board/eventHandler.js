@@ -36,8 +36,8 @@ document.addEventListener("drop", (e) => {
 document.addEventListener("keydown", (e) => {
     let key = e.key || e.keyCode;
     if (key === "Escape" || key === 27) {
-        document.querySelector(".category-popup").classList.remove("clicked");
-        document.querySelector(".board-popup").classList.remove("clicked"); 
+        boardPopupLeave();
+        categoryPopupLeave();
     }
 
     if (key === "Enter" || key === 13) {

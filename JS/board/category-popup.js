@@ -57,6 +57,9 @@ const categoryPopupEnter = (type) => {
 }
 
 const categoryPopupLeave = () => {
+    if (categoryArr.length == 0 ) {
+        return;
+    }
     document.querySelector(".category-popup").classList.remove("clicked");
     categoryInput.value = null;
     category.setImage(null)
