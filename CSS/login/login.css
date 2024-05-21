@@ -1,0 +1,441 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+}
+
+
+ul,li {
+    list-style: none;
+}
+
+#container {
+    width: 100%;
+    height: 990px;
+    background-image: url(./테스트\ 복사본.gif);
+    background-size: cover;
+    background-repeat: no-repeat;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#container > .loginRegisterBox{
+    width: 800px;
+    height: 500px;
+    background: var(--main-back-color);
+    display: flex;
+    border-radius: 3px;
+}
+
+.loginRegisterBox .leftImageBox {
+    width: 400px;
+    height: 500px;
+    background-image: url(./로그인왼쪽사진.jpeg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    border-radius: 3px;
+}
+
+.loginRegisterBox #rightInfoBox {
+    width: 400px;
+    height: 400px;
+    background: var(--main-back-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 40px;
+    transition: all 1s;
+}
+
+.loginBox {
+    /* display: none; */
+    /* width: 350px;
+    height: 400px; */
+    transition: all 1s;
+}
+
+.loginBox > div > h2 {
+    text-align: center;
+    margin-bottom: 50px;
+    color: #fff;
+}
+
+.idInputBox > p:nth-child(1){
+    margin-bottom: 5px;
+    font-size: 12px;
+}
+
+.idInputBox > p > label {
+    color:#fff;
+}
+
+.idInputBox > p > label::after {
+    content: "*";
+    color: #F23F42;
+    padding-left: 3px;
+}
+
+
+.idInput {
+    width: 300px;
+    height: 35px;
+    margin-bottom: 10px;
+    border-radius: 3px;
+    border: 0px;
+    padding-left: 10px;
+    background: #1E1F22;
+    color: #fff;
+}
+
+.idInput:focus {
+    outline: none;
+}
+.password_box{
+    position: relative;
+}
+
+.passwordInputBox > p:nth-child(1){
+    margin-bottom: 5px;
+    font-size: 12px;
+}
+
+.passwordInputBox > p > label {
+    color:#fff;
+}
+
+.passwordInputBox > p > label:nth-child(1)::after {
+    content: "*";
+    color: #F23F42;
+    padding-left: 3px;
+}
+.eye_image {
+    position: absolute;
+    color: #fff;
+    right: 10px;
+    top: 7px;
+    cursor: pointer;
+    filter: invert(0.4);
+}
+
+.passwordInput{
+    width: 300px;
+    height: 35px;
+    margin-bottom: 2px;
+    border-radius: 3px;
+    border: 0px;
+    padding-left: 10px;
+    background: #1E1F22;
+    color: #fff;
+}
+
+.passwordInput:focus {
+    outline: none;
+}
+
+
+.findPassword{
+    margin-bottom: 15px;
+}
+
+.findPassword > a{
+    font-size: 12px;
+    color: #00A8FC;
+}
+
+.loginBtn {
+    width: 300px;
+    height: 35px;
+    background: #5864f2;
+    border: 0;
+    color: #fff;
+    border-radius: 3px;
+    margin-bottom: 5px;
+    cursor: pointer;
+}
+
+.loginBtn:hover {
+    background: rgba(88, 100, 242, 0.7);
+}
+
+.click:hover{
+    background: rgba(88, 100, 242, 0.4);
+    transition: 0.2s;
+}
+
+.registerText {
+    font-size: 12px;
+    font-weight: 700;
+    color: #949BA4;
+}
+
+.registerText > a {
+    color: #00A8FC;
+    cursor: pointer;
+}
+.rightregBox {
+    width: 400px;
+    height: 500px;
+    transform: translateX(650px);
+    background: var(--main-back-color);
+    padding: 25px 50px;
+    border-radius: 3px;
+    /* transition: all 1s; */
+}
+
+.regBox {
+    position: absolute;
+    transform: translateX(805px);
+    top: 30px;
+    overflow: hidden;
+    transition: all 1s;
+}
+/* .registerBox {
+    /* display: none;
+} */
+
+.registerBox > div > h2 {
+    text-align: center;
+    margin-bottom: 50px;
+    color: #fff;
+}
+
+.regidInputBox > p:nth-child(1){
+    margin-bottom: 5px;
+    font-size: 12px;
+}
+
+.regidInputBox > p > label {
+    color:#fff;
+}
+
+.regidInputBox > p > label::after {
+    content: "*";
+    color: #F23F42;
+    padding-left: 3px;
+}
+
+.regidInput {
+    width: 300px;
+    height: 35px;
+    margin-bottom: 10px;
+    border-radius: 3px;
+    border: 0px;
+    padding-left: 10px;
+    background: #1E1F22;
+    color: #fff;
+}
+
+.regidInput:focus {
+    outline: none;
+}
+
+.registerBox > div > h2 {
+    text-align: center;
+    margin-bottom: 50px;
+    color: #fff;
+}
+
+.regPasswordInputBox > p:nth-child(1){
+    margin-bottom: 5px;
+    font-size: 12px;
+}
+
+.regPasswordInputBox > p > label {
+    color:#fff;
+}
+
+.regPasswordInputBox > p > label::after {
+    content: "*";
+    color: #F23F42;
+    padding-left: 3px;
+}
+
+.regPasswordInput {
+    width: 300px;
+    height: 35px;
+    border-radius: 3px;
+    border: 0px;
+    padding-left: 10px;
+    background: #1E1F22;
+    color: #fff;
+    margin-bottom: 10px;
+}
+
+.regPasswordInput:focus {
+    outline: none;
+}
+
+.passwordreInputBox > p:nth-child(1){
+    margin-bottom: 5px;
+    font-size: 12px;
+}
+
+.passwordreInputBox > p > label {
+    color:#fff;
+}
+
+.passwordreInputBox > p > label::after {
+    content: "*";
+    color: #F23F42;
+    padding-left: 3px;
+}
+
+.passwordreInput {
+    width: 300px;
+    height: 35px;
+    margin-bottom: 10px;
+    border-radius: 3px;
+    border: 0px;
+    padding-left: 10px;
+    background: #1E1F22;
+    color: #fff;
+}
+
+.passwordreInput:focus {
+    outline: none;
+}
+
+.nicknameInputBox > p:nth-child(1){
+    margin-bottom: 5px;
+    font-size: 12px;
+}
+
+.nicknameInputBox > p > label {
+    color:#fff;
+}
+
+.nicknameInputBox > p > label::after {
+    content: "*";
+    color: #F23F42;
+    padding-left: 3px;
+}
+
+.nicknameInput {
+    width: 300px;
+    height: 35px;
+    margin-bottom: 10px;
+    border-radius: 3px;
+    border: 0px;
+    padding-left: 10px;
+    background: #1E1F22;
+    color: #fff;
+    transition: all 1s;
+}
+
+.nicknameInput:focus {
+    outline: none;
+}
+
+.regBtn {
+    width: 300px;
+    height: 35px;
+    background: #5864F2;
+    border: 0;
+    color: #fff;
+    border-radius: 3px;
+    margin-bottom: 5px;
+    cursor: pointer;
+}
+
+.regBtn:hover {
+    background: rgba(88, 100, 242, 0.7);
+}
+
+.click:hover{
+    background: rgba(88, 100, 242, 0.4);
+    transition: 0.2s;
+}
+
+.checkBoxInput {
+    margin-bottom: 20px;
+}
+
+.checkBoxInput > p > input#check_btn {
+    width: 24px;
+    height: 24px;
+    border-width: 1px;
+    border-style: solid;
+    box-sizing: border-box;
+    border-radius: 6px;
+    cursor: pointer;
+    background: #5864F2;
+    display: none;
+
+}
+
+input#check_btn{
+    display:none;
+    }
+  
+input#check_btn + label{
+    cursor:pointer;
+   }
+  
+input#check_btn + label > span{
+    vertical-align: middle;
+    padding-left: 5px;
+   }
+  
+  /* label:before에 체크하기 전 상태 CSS */
+input#check_btn + label:before{
+    content:"";
+    display:inline-block;
+    width:17px;
+    height:17px;
+    border:1px solid #999;
+    border-radius: 6px;
+    vertical-align:middle;
+    }
+    
+  /* label:before에 체크 된 상태 CSS */  
+input#check_btn:checked + label:before{
+    content:"";
+    background-color:#5865F2;
+    border-color:#999;
+    background-image: url('check_white.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: 50%;
+}
+.regBtn:disabled {
+    cursor: not-allowed;
+    background: rgba(88, 101, 242, 0.7);
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.checkBoxInput > label > span {
+    color: #888;
+    font-size: 18px;
+}
+
+.text_show{
+    color: #fA777C;
+    font-size: 14px;
+    margin-bottom: 10px;
+    opacity: 1;
+    max-height: 100px; /* 최대 높이 설정 */
+    transition: opacity 0.3s, max-height 1s, margin-bottom 0.7s;
+    overflow: hidden; /* 높이 전환 시 콘텐츠가 넘치는 것을 방지 */;
+}
+
+.text_hide{
+    opacity: 0;
+    max-height: 0; /* 높이를 0으로 설정하여 부드러운 전환 효과 */
+    margin-bottom: 0; /* 마진도 0으로 설정 */
+    transition: opacity 0.3s, max-height 0.3s, margin-bottom 0.3s;
+    overflow: hidden; /* 높이 전환 시 콘텐츠가 넘치는 것을 방지 */
+    color: #fA777C;
+    font-size: 14px;
+}
+
+.hide {
+    opacity: 0;
+    max-height: 0; /* 높이를 0으로 설정하여 부드러운 전환 효과 */
+    margin-bottom: 0; /* 마진도 0으로 설정 */
+    transition: opacity 0.3s, max-height 0.3s, margin-bottom 0.3s;
+    overflow: hidden; /* 높이 전환 시 콘텐츠가 넘치는 것을 방지 */
+    color: #fA777C;
+    font-size: 14px;
+}
