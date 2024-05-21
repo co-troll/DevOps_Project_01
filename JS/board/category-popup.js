@@ -165,12 +165,13 @@ const deleteCategory = (e) => {
             categoryArr.splice(i, 1);
             let index = 0;
             for (let j of boardArr) {
+                console.log(j);
                 if (j.categoryNo == i) 
                     boardArr.splice(j, 1);
             }
             for (let j of categoryArr) 
                 j.no = index++;
-
+    
             localStorage.setItem("Category", JSON.stringify(categoryArr));
             localStorage.setItem("Board", JSON.stringify(boardArr));
             render();

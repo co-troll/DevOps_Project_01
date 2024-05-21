@@ -11,7 +11,7 @@ const boardListRender = (index) => {
             <div class="board-sharp">
                 <svg class="icon__67ab4" aria-hidden="true" role="img" xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24"><path fill="currentColor" fill-rule="evenodd" d="M10.99 3.16A1 1 0 1 0 9 2.84L8.15 8H4a1 1 0 0 0 0 2h3.82l-.67 4H3a1 1 0 1 0 0 2h3.82l-.8 4.84a1 1 0 0 0 1.97.32L8.85 16h4.97l-.8 4.84a1 1 0 0 0 1.97.32l.86-5.16H20a1 1 0 1 0 0-2h-3.82l.67-4H21a1 1 0 1 0 0-2h-3.82l.8-4.84a1 1 0 1 0-1.97-.32L15.15 8h-4.97l.8-4.84ZM14.15 14l.67-4H9.85l-.67 4h4.97Z" clip-rule="evenodd" class=""></path></svg>
             </div> <!-- # -->
-            <div class="board-title">${item.title}</div> <!-- 제목 -->
+            <div class="board-title" data-author="${item.author}">${item.title}</div> <!-- 제목 -->
             <div class="board-icons">
                 <div class="board-setting">
                     <svg class="icon__0bfbf" aria-hidden="true" role="img" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 24 24"><path fill="currentColor" d="m13.96 5.46 4.58 4.58a1 1 0 0 0 1.42 0l1.38-1.38a2 2 0 0 0 0-2.82l-3.18-3.18a2 2 0 0 0-2.82 0l-1.38 1.38a1 1 0 0 0 0 1.42ZM2.11 20.16l.73-4.22a3 3 0 0 1 .83-1.61l7.87-7.87a1 1 0 0 1 1.42 0l4.58 4.58a1 1 0 0 1 0 1.42l-7.87 7.87a3 3 0 0 1-1.6.83l-4.23.73a1.5 1.5 0 0 1-1.73-1.73Z" class=""></path></svg>
@@ -26,11 +26,12 @@ const boardListRender = (index) => {
     return board;
 }
 
-// 게시판 렌더 함수
+// 게시글 렌더 함수
 const boardRender = (arr) => {
     const board = document.querySelector(".board-content");
     const boardInfo = document.querySelector(".board-info");
 
+    console.log(arr);
     board.innerHTML = arr.content;
 
     boardInfo.innerHTML = `
@@ -64,7 +65,7 @@ const currentCategoryNo = () => {
     }
 }
 
-// 카테고리번호별 게시글 배열 함수
+// 카테고리번호별 게시글 객체 함수
 const arrByCategory = (no = currentCategoryNo()) => {
     return boardArr.filter((i) => i.categoryNo == no).sort((a,b) => a.no - b.no )
 }
@@ -80,20 +81,24 @@ const boardBtnEvent = () => {
     // 게시글 수정 버튼
     const boardModifyBtn = document.querySelectorAll(".board-setting");
     for (let i of boardModifyBtn) {
-        i.addEventListener("click", (e) => {
+        i.onclick = (e) => {
             boardPopupEnter("modify");
-        })
+        }
     }
 
     // 게시글 삭제 버튼
     const boardDeleteBtn = document.querySelectorAll(".board-delete");
     for (let i of boardDeleteBtn) {
-        i.addEventListener("click", (e) => {
+        i.onclick = (e) => {
+            if (i.parentNode.previousElementSibling.dataset.author != loginUser.nick) {
+                alert("다른 유저의 개시글입니다.");
+                return;
+            }
             boardPopupEnter("delete");
-        })
+        }
     }
-
 }
+
 // 게시판 선택 함수
 const boardSelect = (e) => {
     if (e.target.classList.contains("board-select"))
@@ -111,6 +116,7 @@ const boardSelect = (e) => {
         boardRender(arrByCategory()[e.target.dataset.index]);
 
         boardBtnEvent();
+        commentListRender();
     }
 }
 
@@ -132,10 +138,6 @@ const boardDrop = (e) => {
     localStorage.setItem("Board", JSON.stringify(boardArr));
     render(document.querySelector(".selected > div").innerHTML);
     return;
-    for(let i of document.querySelectorAll(".category-box")) {
-        if (i.firstChild.innerHTML == document.querySelector(".category-name > h2").innerHTML) 
-            i.classList.add("selected");
-    };
 }
 
 // 게시판 정보 함수

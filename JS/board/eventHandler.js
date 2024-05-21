@@ -41,6 +41,17 @@ document.addEventListener("keydown", (e) => {
     }
 
     if (key === "Enter" || key === 13) {
+        switch (e.target.dataset.type) {
+            case "write":
+                writeComment();
+                break;
+            case "modify":
+                modifyComment();
+                break;
+            case "reply":
+                replyComment();
+                break;
 
+        }
     }
 })

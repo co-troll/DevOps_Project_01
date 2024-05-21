@@ -5,6 +5,7 @@ if (userArr.length == 0) {
 const loginUser = userArr.filter((i) => i.id == sessionStorage.getItem("login"))[0] || { "id": "guest", "password": 111, "nick": "게스트", "image": null };
 const categoryArr = JSON.parse(localStorage.getItem("Category")) || [];
 const boardArr = JSON.parse(localStorage.getItem("Board")) || [];
+const commentArr = JSON.parse(localStorage.getItem("Comment")) || [];
 
 
 // 랜더 함수
@@ -13,7 +14,7 @@ const render = (selectedCategory = null) => {
     const categoryList = document.querySelector("#category > ul");
     const boardList = document.querySelector(".board-list > ul");
     categoryList.innerHTML = "";
-    boardList.innerHTML = "";
+    boardList.innerHTML = "";document.querySelector(".reply-input").dataset.type = "write";
     for (let i = 0; i < categoryArr.length; i++) {
         const item = categoryRender(i);
         categoryList.append(item);
@@ -42,8 +43,11 @@ const render = (selectedCategory = null) => {
         document.querySelector(".board-content").innerHTML = "";
         document.querySelector(".board-top-info").style.display = "none";
         document.querySelector(".board-info").style.display = "none";
+        document.querySelector(".reply-input").disabled = true;
+        document.querySelector(".reply-box > ul").innerHTML = "";
         return
     }
+    document.querySelector(".reply-input").disabled = false;
     document.querySelector(".board-top-info").style.display = "flex";
     document.querySelector('.board-list > ul').firstElementChild.firstElementChild.firstElementChild.classList.add("board-select");
     document.querySelector(".board-top-title").innerHTML = document.querySelector(".board-select > .board-title").innerHTML;
@@ -55,6 +59,8 @@ const render = (selectedCategory = null) => {
         boardList.parentNode.style.paddingRight = "8px";
     else 
         boardList.parentNode.style.paddingRight = "0px";    
+
+    commentListRender();
     
     console.log("render");
 }
@@ -89,6 +95,8 @@ const init = () => {
         boardList.parentNode.style.paddingRight = "8px";
     else
         boardList.parentNode.style.paddingRight = "0px";
+
+    commentListRender();
 
     console.log("init");
 }

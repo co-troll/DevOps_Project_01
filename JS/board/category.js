@@ -64,11 +64,6 @@ const categorySelect = (e) => {
         return;
     if (e.target.parentNode.classList.contains("category-box")) {
         render(e.target.innerHTML);
-        // for(let i of document.querySelectorAll(".category-box")) {
-        //     i.classList.remove("selected");
-        // };
-        // e.target.parentNode.classList.add("selected");
-        // document.querySelector(".category-name > h2").innerHTML = document.querySelector(".selected > div").innerHTML;
     }
 }
 
