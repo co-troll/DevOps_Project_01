@@ -3,8 +3,10 @@
     padding: 0;
     box-sizing: border-box;
     text-decoration: none;
+    font-family: "Noto Sans KR", sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
 }
-
 
 ul,li {
     list-style: none;
@@ -197,7 +199,7 @@ ul,li {
 
 .registerBox > div > h2 {
     text-align: center;
-    margin-bottom: 50px;
+    margin-bottom: 20px;
     color: #fff;
 }
 
@@ -233,7 +235,7 @@ ul,li {
 
 .registerBox > div > h2 {
     text-align: center;
-    margin-bottom: 50px;
+    margin-bottom: 20px;
     color: #fff;
 }
 
