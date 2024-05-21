@@ -153,7 +153,7 @@ loginBtn.addEventListener('click', function(){ // 로컬스토리지 id, passwor
         alert('로그인 완료');
         document.querySelector('.idInput').value = "";
         document.querySelector('.passwordInput').value = "";
-        location.href = '../../HTML/help/Board.html';
+        location.href = '../../HTML/board/board.html';
     }
 });
 
