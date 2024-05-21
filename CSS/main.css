@@ -1,6 +1,45 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Noto Sans KR", sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+}
+
 :root {
     --main-back-color: #313338;
     --side-back-color: #2B2D31;
     --tab-back-color: #1E1F22;
-    --side-text-color: #1E1F22;
+    --side-text-color:  #939aa3;
+    --main-text-color: #f2f3f5;
+    --green-color: #20df70;
+    /* 사용법 color: var(--main-back-color) */
+
+}
+
+svg {
+    pointer-events: none;
+}
+
+ol, ul, li {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+} 
+
+::-webkit-scrollbar {
+    width: 10px;  /* 스크롤바의 너비 */
+}
+
+::-webkit-scrollbar-thumb {
+    background:black; /* 스크롤바의 색상 */
+    
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--side-back-color);  /*스크롤바 뒷 배경 색상*/
 }
