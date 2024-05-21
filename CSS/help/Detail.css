@@ -135,6 +135,7 @@ body{
 }
 
 .main_board:hover {
+    background: rgba(88, 100, 242, 0.8);
     animation: trying;
     animation-duration: 0.2s;
     transition: 0.3s ease;

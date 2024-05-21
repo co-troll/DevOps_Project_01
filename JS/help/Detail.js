@@ -31,7 +31,7 @@ let goBoard = document.querySelector('.main_board');
 
 
 goBoard.onclick = () => {
-    // location.href = ('../../HTML/help/Board.html')
+    location.href = ('../../HTML/help/Board.html')
 }
 
 // console.log(window.location.search);

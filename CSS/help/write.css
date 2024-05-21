@@ -55,10 +55,11 @@ body {
 
 .button_box {
     display: flex;
-    justify-content: flex-end;
-    width: 85%;
+    width: 1000px;
     height: 100px;
     gap: 15px;
+    align-items: center;
+    justify-content: flex-end;
 }
 
 .create_content {

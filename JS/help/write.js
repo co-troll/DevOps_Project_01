@@ -70,3 +70,9 @@ createContent.onclick = function move() { // 작성 버튼 누를 시 작성 값
     localStorage.setItem('Board', JSON.stringify(pageLoad));
     location.href = 'Detail.html?writeNum=' + write_num;
 }
+
+const cancleWrite = document.querySelector('.cancle_button');
+
+cancleWrite.addEventListener('click', () => {
+    location.href = '../../HTML/help/Board.html'
+})
