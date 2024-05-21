@@ -180,3 +180,15 @@ regBtn.addEventListener('mousedown', function(){
 regBtn.addEventListener('mouseup', function(){
     regBtn.classList.remove('click');
 })
+
+let click = 0;
+
+document.querySelector('.eye_image').onclick = function () { // 비밀번호 옆, 눈 이미지 클릭시
+    if(click === 0){
+        document.querySelector('.passwordInput').type = 'text';
+        click++;
+    }else{
+        document.querySelector('.passwordInput').type = 'password';
+        click--;
+    }
+}
