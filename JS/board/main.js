@@ -1,4 +1,7 @@
-const loginUser = JSON.parse(localStorage.getItem("User")).filter((i) => i.id == sessionStorage.getItem("login"))[0] || { "id": "guest", "password": 111, "nick": "게스트", "image": null };
+sessionStorage.setItem("login", "guest");
+
+const userArr = JSON.parse(localStorage.getItem("User")) || [];
+const loginUser = userArr.filter((i) => i.id == sessionStorage.getItem("login"))[0] || { "id": "guest", "password": 111, "nick": "게스트", "image": null };
 const categoryArr = JSON.parse(localStorage.getItem("Category")) || [];
 const boardArr = JSON.parse(localStorage.getItem("Board")) || [];
 
