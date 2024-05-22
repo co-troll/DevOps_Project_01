@@ -77,8 +77,9 @@ body {
     display: flex;
     justify-content: space-around;
     align-items: center;
-    background-color: rgb(80, 65, 240);
+    background-color: #5864f2;
     color: rgba(226, 225, 238, 0.9);
+    box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
     border-bottom: 2px solid black;
     border-radius: 20px;
     margin-bottom: 40px;
@@ -146,6 +147,25 @@ body {
   align-items: center;
   justify-content: center;
   transform: scale(0.2 0002);
+}
+
+.contact_bar {
+  width: 100px;
+  height: 48px;
+  border-radius: 20px;
+  background-color: rgb(89, 122, 182);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+  transition: all 0.3s;
+}
+
+.contact_bar:hover {
+  background-color: rgba(89, 122, 182, 0.5);
+}
+.contact_bar:active {
+  background-color: rgba(0, 0, 0, 0.2);
 }
 
 .container {
@@ -279,7 +299,7 @@ body {
 .board_list > ul > a {
   width: 100px;
   height: 50px;
-  padding: 15px 0px 0 0px;
+  padding: 15px 0px 0px 0px;
   color: rgba(226, 225, 238, 0.7);
   text-decoration-line: none;
   overflow: hidden;
