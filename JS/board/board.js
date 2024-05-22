@@ -31,7 +31,6 @@ const boardRender = (arr) => {
     const board = document.querySelector(".board-content");
     const boardInfo = document.querySelector(".board-info");
 
-    console.log(arr);
     board.innerHTML = arr.content;
 
     boardInfo.innerHTML = `
@@ -82,7 +81,11 @@ const boardBtnEvent = () => {
     const boardModifyBtn = document.querySelectorAll(".board-setting");
     for (let i of boardModifyBtn) {
         i.onclick = (e) => {
-            boardPopupEnter("modify");
+            if (i.parentNode.previousElementSibling.dataset.author != loginUser.nick) {
+                alert("다른 유저의 개시글입니다.");
+                return;
+            }
+            boardPopupEnter("modify", i.parentNode.parentNode);
         }
     }
 
@@ -94,7 +97,7 @@ const boardBtnEvent = () => {
                 alert("다른 유저의 개시글입니다.");
                 return;
             }
-            boardPopupEnter("delete");
+            boardPopupEnter("delete", i.parentNode.parentNode);
         }
     }
 }
@@ -117,6 +120,7 @@ const boardSelect = (e) => {
 
         boardBtnEvent();
         commentListRender();
+        
     }
 }
 
@@ -130,14 +134,21 @@ const boardDrop = (e) => {
 
     [arr[dragIndex], arr[dropIndex]] = [arr[dropIndex], arr[dragIndex]];
     let index = 0;
-    for (let j of arr) {
-        console.log(j.no);
-        j.no = index++;
+    for (let i of arr) {
+        console.log(i.no);
+        i.no = index++;
 
     }
+    for (let i of commentArr) {
+        if (i.boardNo == dragIndex && i.categoryNo == currentCategoryNo())  
+            i.boardNo = dropIndex;
+        else if (i.boardNo == dropIndex && i.categoryNo == currentCategoryNo()) 
+            i.boardNo = dragIndex;
+    }
+    
+    localStorage.setItem("Comment", JSON.stringify(commentArr));
     localStorage.setItem("Board", JSON.stringify(boardArr));
     render(document.querySelector(".selected > div").innerHTML);
-    return;
 }
 
 // 게시판 정보 함수

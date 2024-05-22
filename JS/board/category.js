@@ -65,6 +65,7 @@ const categorySelect = (e) => {
     if (e.target.parentNode.classList.contains("category-box")) {
         render(e.target.innerHTML);
     }
+    
 }
 
 const categoryDrop = (e) => {
@@ -93,6 +94,14 @@ const categoryDrop = (e) => {
         else if (i.categoryNo == dropIndex) 
             i.categoryNo = dragIndex;
     }
+
+    for (let i of commentArr) {
+        if (i.categoryNo == dragIndex)  
+            i.categoryNo = dropIndex;
+        else if (i.categoryNo == dropIndex) 
+            i.categoryNo = dragIndex;
+    }
+    localStorage.setItem("Comment", JSON.stringify(commentArr));
     localStorage.setItem("Board", JSON.stringify(boardArr));
     render(document.querySelector(".category-name > h2").innerHTML);
 }

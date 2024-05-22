@@ -84,6 +84,7 @@ const init = () => {
         document.querySelector(".board-content").innerHTML = "";
         document.querySelector(".board-top-info").style.display = "none";
         document.querySelector(".board-info").style.display = "none";
+        document.querySelector(".reply-box > ul").innerHTML = "";
         return
     }
     document.querySelector('.board-list > ul').firstElementChild.firstElementChild.firstElementChild.classList.add("board-select");

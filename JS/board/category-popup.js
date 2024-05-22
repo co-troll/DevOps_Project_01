@@ -155,28 +155,31 @@ const modifyCategory = (e) => {
 
 // 카테고리 삭제 함수
 const deleteCategory = (e) => {
-    
     if (categoryInput.placeholder != categoryInput.value) {
         categoryDes.innerHTML = "일치하지 않습니다.";
         return;
     }
     for (let i = 0; i < categoryArr.length; i++) {
         if (categoryArr[i].name == document.querySelector(".category-name > h2").innerHTML) {
+            for (let j = 0; j < commentArr.length; j++) {
+                if (commentArr[j].categoryNo == categoryArr[i].no) {
+                    commentArr.splice(j, 1);
+                    j--;
+                }
+            }
+            for (let j of arrByCategory()) {
+                
+                deleteForceBoard(j);
+            }
+            
             categoryArr.splice(i, 1);
             let index = 0;
-            for (let j of boardArr) {
-                console.log(j);
-                if (j.categoryNo == i) 
-                    boardArr.splice(j, 1);
-            }
             for (let j of categoryArr) 
                 j.no = index++;
-    
+
             localStorage.setItem("Category", JSON.stringify(categoryArr));
-            localStorage.setItem("Board", JSON.stringify(boardArr));
-            render();
             categoryPopupLeave();
-            init();
+            render();
             return;
         }
     }

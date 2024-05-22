@@ -45,7 +45,7 @@ const popupDes = document.querySelector(".category-popup-img-text"); // 삭제 �
 const boardTitleInput = document.querySelector(".board-popup-input-title");
 const boardContentInput = document.querySelector(".board-popup-input-content");
 const boardBtn = document.querySelector(".board-popup-create-btn");
-const boardPopupEnter = (type) => {
+const boardPopupEnter = (type, item) => {
     boardBtn.disabled = true;
     document.querySelector(".board-popup").classList.add("clicked");
     const selectArr = arrByCategory();
@@ -62,19 +62,20 @@ const boardPopupEnter = (type) => {
         case "modify":
             boardBtn.disabled = false;
             boardTitle.innerHTML = "게시글 수정";
-            boardTitleInput.value = selectArr[document.querySelector(".board-select").dataset.index].title;
-            boardContentInput.placeholder = selectArr[document.querySelector(".board-select").dataset.index].content;
+            boardTitleInput.value = selectArr[item.dataset.index].title;
+            boardContentInput.placeholder = selectArr[item.dataset.index].content;
             boardBtn.innerHTML = "수정";
-            boardBtn.onclick = (e) => {
-                modifyBoard(e, selectArr[document.querySelector(".board-select").dataset.index]);
+            boardBtn.onclick = () => {
+                modifyBoard(selectArr[item.dataset.index]);
             };
             break;
         case "delete":
-            boardTitleInput.placeholder = selectArr[document.querySelector(".board-select").dataset.index].title;
+            boardTitle.innerHTML = "게시글 삭제";
+            boardTitleInput.placeholder = selectArr[item.dataset.index].title;
             boardContentInput.placeholder = "삭제하시려면 게시글 제목을 제목란에 입력해주세요.";
             boardBtn.innerHTML = "삭제";
-            boardBtn.onclick = (e) => {
-                deleteBoard(e, selectArr[document.querySelector(".board-select").dataset.index]);
+            boardBtn.onclick = () => {
+                deleteBoard(selectArr[item.dataset.index]);
             };
             break;
     }
@@ -114,7 +115,7 @@ const createBoard = (e) => {
 }
 
 // 게시글 변경 함수
-const modifyBoard = (e, arr) => {
+const modifyBoard = (arr) => {
     arr.title = boardTitleInput.value;
     arr.content = boardContentInput.value;
     localStorage.setItem("Board", JSON.stringify(boardArr));
@@ -123,20 +124,21 @@ const modifyBoard = (e, arr) => {
     console.log("modify");
 }
 
-// 카테고리 삭제 함수
-const deleteBoard = (e, arr) => {
-    if (boardTitleInput.placeholder != boardTitleInput.value) {
-        boardContentInput.value = "";
-        boardContentInput.placeholder = "일치하지 않습니다.";
-        return;
-    }
+// 카테고리 강제 삭제 함수 
+const deleteForceBoard = (arr) => {
     for (let i = 0; i < boardArr.length; i++) {
         if (boardArr[i] == arr) {
-            console.log(11);
+            for (let j = 0; j < commentArr.length; j++) {
+                if (commentArr[j].categoryNo == arr.categoryNo && commentArr[j].boardNo == arr.no) {
+                    commentArr.splice(j, 1);
+                    j--;
+                }
+            }
             boardArr.splice(i, 1);
             let index = 0;
             for (let j of arrByCategory()) 
                 j.no = index++;
+            localStorage.setItem("Comment", JSON.stringify(commentArr));
             localStorage.setItem("Board", JSON.stringify(boardArr));
             boardPopupLeave();
             render(document.querySelector(".selected > div").innerHTML);
@@ -144,6 +146,16 @@ const deleteBoard = (e, arr) => {
             return;
         }
     }
+}
+
+// 카테고리 삭제 함수
+const deleteBoard = (arr) => {
+    if (boardTitleInput.placeholder != boardTitleInput.value) {
+        boardContentInput.value = "";
+        boardContentInput.placeholder = "일치하지 않습니다.";
+        return;
+    }
+    deleteForceBoard(arr);
 }
 
 

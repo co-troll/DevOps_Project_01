@@ -48,11 +48,12 @@ const commentListRender = () => {
     replyBtnSetting("write");
     const commentList = document.querySelector(".reply-box > ul");
     commentList.innerHTML = "";
+    if (!arrByBoardAndCategory().length) 
+        return;
     for (let i = 0; i < arrByBoardAndCategory().length; i++) {
         commentRender(i);
     }
-    if (!arrByBoardAndCategory().length) 
-        return;
+    
     commentList.lastChild.scrollIntoView(); 
     replyBtnEvent();
 }
@@ -170,6 +171,10 @@ const replyBtnEvent = () => {
     const replyModifyBtn = document.querySelectorAll(".reply-setting");
     for (let i of replyModifyBtn) {
         i.onclick = (e) => {
+            if (loginUser.nick != i.parentNode.previousElementSibling.firstElementChild.innerHTML) {
+                alert("다른 유저의 댓글입니다.");
+                return;
+            }
             replyBtnSetting("modify", i.parentNode.parentNode);
         }
     }
@@ -271,14 +276,8 @@ const replyComment = () => {
         }
     }
 }
-
-// 댓글 삭제 함수
-const deleteComment = (item) => {
-    const comment = item.parentNode.parentNode;
-    if (loginUser.nick != item.parentNode.previousElementSibling.firstElementChild.innerHTML) {
-        alert("다른 유저의 댓글입니다.");
-        return;
-    }
+// 댓글 강제 삭제 함수 
+const deleteForceComment = (comment) => {
     if (comment.classList.contains("reply")) {
         const arr = arrByBoardAndCategory().filter((i) => i.no == comment.dataset.index)[0];
         for (let i = 0; i < commentArr.length; i++) {
@@ -309,5 +308,15 @@ const deleteComment = (item) => {
             }
         }
     }
-    // item.parentNode.parentNode.remove();
+}
+
+
+// 댓글 삭제 함수
+const deleteComment = (item) => {
+    const comment = item.parentNode.parentNode;
+    if (loginUser.nick != item.parentNode.previousElementSibling.firstElementChild.innerHTML) {
+        alert("다른 유저의 댓글입니다.");
+        return;
+    }
+    deleteForceComment(comment);
 }
