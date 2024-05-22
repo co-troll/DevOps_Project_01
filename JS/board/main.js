@@ -9,7 +9,7 @@ const commentArr = JSON.parse(localStorage.getItem("Comment")) || [];
 
 
 // 랜더 함수
-const render = (selectedCategory = null) => {
+const render = (selectedCategory = null, selectedBoardNo = null) => {
     userInit();
     const categoryList = document.querySelector("#category > ul");
     const boardList = document.querySelector(".board-list > ul");
@@ -49,7 +49,10 @@ const render = (selectedCategory = null) => {
     }
     document.querySelector(".reply-input").disabled = false;
     document.querySelector(".board-top-info").style.display = "flex";
-    document.querySelector('.board-list > ul').firstElementChild.firstElementChild.firstElementChild.classList.add("board-select");
+    if (selectedBoardNo)
+        document.querySelectorAll(".board-box")[selectedBoardNo].classList.add("board-select");
+    else 
+        document.querySelector('.board-list > ul').firstElementChild.firstElementChild.firstElementChild.classList.add("board-select");
     document.querySelector(".board-top-title").innerHTML = document.querySelector(".board-select > .board-title").innerHTML;
 
     boardRender(arrByCategory()[document.querySelector(".board-select").dataset.index]);
@@ -84,6 +87,7 @@ const init = () => {
         document.querySelector(".board-content").innerHTML = "";
         document.querySelector(".board-top-info").style.display = "none";
         document.querySelector(".board-info").style.display = "none";
+        document.querySelector(".reply-input").disabled = true;
         document.querySelector(".reply-box > ul").innerHTML = "";
         return
     }

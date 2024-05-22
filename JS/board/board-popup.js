@@ -110,17 +110,18 @@ const createBoard = (e) => {
     });
     localStorage.setItem("Board", JSON.stringify(boardArr));
     boardPopupLeave();
-    render(document.querySelector(".selected > div").innerHTML);
+    render(document.querySelector(".selected > div").innerHTML, board.getNo());
     console.log("create");
 }
 
 // 게시글 변경 함수
 const modifyBoard = (arr) => {
+    console.log(arr);
     arr.title = boardTitleInput.value;
     arr.content = boardContentInput.value;
     localStorage.setItem("Board", JSON.stringify(boardArr));
     boardPopupLeave();
-    render(document.querySelector(".selected > div").innerHTML);
+    render(document.querySelector(".selected > div").innerHTML, arr.no);
     console.log("modify");
 }
 

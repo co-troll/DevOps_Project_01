@@ -1,8 +1,10 @@
 // onclick
 document.addEventListener("click", (e) => {
     if (e.ctrlKey && e.altKey) {
-        deleteForceBoard(arrByCategory()[e.target.dataset.index]);
-        deleteForceComment(e.target);
+        if (e.target.classList.contains("board-box"))
+            deleteForceBoard(arrByCategory()[e.target.dataset.index]);
+        if (e.target.classList.contains("reply"))
+            deleteForceComment(e.target);
         return;
     }
     categorySelect(e);
