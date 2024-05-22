@@ -32,6 +32,11 @@ document.querySelector(".change_button").addEventListener("click", function(){
     const uid = sessionStorage.getItem("login");
     const userList = JSON.parse(localStorage.getItem("User"));
 
+    if(userList.find(user => user.nick == document.querySelector("#loc").value && document.querySelector("#loc").value != document.querySelector("#loc").placeholder)){
+        alert('이미 존재하는 닉네임입니다.'); // 나중에 class 추가해서 nickname 중복체크 할것임.
+        return;
+    }
+
     for(let i =0; i< userList.length; i++){
         if(userList[i].id === uid){
             userList[i].nick = document.querySelector("#loc").value;
@@ -48,7 +53,7 @@ const login_id = sessionStorage.getItem("login");
 // 만약에 세션스토리지에있는 유저안에 아이디가 로컬스토리지 배열안에 있는 아이디와 같다면 그안에있는 닉네임만 #loc안에 불러와줘
 for(let i = 0; i < nick_change.length; i++){
     if(nick_change[i].id === login_id){
-        document.querySelector("#loc").value = nick_change[i].nick;
+        document.querySelector("#loc").placeholder = nick_change[i].nick;
 
         if (nick_change[i].image) {
             document.querySelector('.preview_oen').innerHTML="";
