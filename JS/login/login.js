@@ -153,7 +153,9 @@ loginBtn.addEventListener('click', function(){ // 로컬스토리지 id, passwor
         alert('로그인 완료');
         document.querySelector('.idInput').value = "";
         document.querySelector('.passwordInput').value = "";
-        location.href = '../../HTML/help/Board.html';
+        location.href = ('../../HTML/help/Board.html');
+    }else if((userArray.find(user => user.id !== IdInput)) || (userArray.find(user => user.password !== PasswordInput))){
+        alert('아이디(로그인 전용 아이디) 또는 비밀번호를 잘못 입력했습니다.')
     }
 });
 
