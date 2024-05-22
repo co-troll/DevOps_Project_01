@@ -62,86 +62,124 @@ createWrite.onclick = () => { // 문의글 작성 버튼 누를시 onclick 작�
 }
 
 let helpBoard = document.querySelector('.help_board');
-let helpBoard2 = document.querySelector('.help_board2');
-let helpBoard3 = document.querySelector('.help_board3');
-let firstTab = document.querySelector('.category_test');
-let secondTab = document.querySelector('.no_test');
-let thirdTab = document.querySelector('.userguide_bar');
+let locationBoard = document.querySelector('.locationBoard');
+let userGuideBoard = document.querySelector('.userGuideBoard');
+let help_bar = document.querySelector('.help_bar');
+let location_bar = document.querySelector('.location_bar');
+let userguide_bar = document.querySelector('.userguide_bar');
 let hide = document.querySelector('.hide');
 let mainShow = document.querySelector('.main_show');
 let home = document.querySelector('.home');
 
-home.onclick = () => {
-    location.href = location.href
-}
-
-firstTab.onclick = () => { // 첫번째 탭을 눌렀을 시 발생하는 이벤트
-    mainShow.classList.add('hide');
-    firstTab.classList.add('checking');
-    secondTab.classList.remove('checking');
-    helpBoard.classList.add('animate');
-    helpBoard.classList.remove('hide');
-    helpBoard.style.display = '';
-    helpBoard.style.zIndex = '4';
-    helpBoard2.style.zIndex = '3';
-    helpBoard2.style.display = 'none';
-    helpBoard3.style.zIndex = '3';
-    helpBoard3.style.display = 'none';
-    setTimeout(() => { // 0.5초 뒤에 helpBoard에 no1color Class 추가
-        helpBoard.classList.add('no1color');
-    }, 500);
-    setTimeout(() => { // 1초 뒤에 helpBoard에 animate Class 삭제
-        // let helpBoard = document.querySelector('.help_board');
-        helpBoard.classList.remove('animate');
-    }, 1000);
-}
-
-secondTab.onclick = () => { // 두번쨰 탭을 눌렀을 시 발생하는 이벤트
-    mainShow.classList.add('hide');
-    secondTab.classList.add('checking');
-    firstTab.classList.remove('checking');
-    helpBoard.classList.add('hide');
-    helpBoard2.classList.add('animate');
-    helpBoard2.classList.remove('hide');
-    helpBoard.style.display = 'none';
-    helpBoard.style.zIndex = '3';
-    helpBoard2.style.zIndex = '4';
-    helpBoard2.style.display = '';
-    helpBoard3.style.zIndex = '3';
-    helpBoard3.style.display = 'none';
-    setTimeout(() => { // 0.5초 뒤에 helpBoard2에 no2color Class 추가
-        helpBoard2.classList.add('no2color');
-    }, 500);
-    setTimeout(() => { // 1초 뒤에 helpBoard2에 animate Class 삭제
-        // let helpBoard = document.querySelector('.help_board');
-        helpBoard2.classList.remove('animate');
-    }, 1000);
-}
-
-thirdTab.onclick = () => { // 두번쨰 탭을 눌렀을 시 발생하는 이벤트
-    mainShow.classList.add('hide');
-    firstTab.classList.remove('checking');
-    secondTab.classList.remove('checking');
-    thirdTab.classList.add('checking');
-    helpBoard.classList.add('hide');
-    helpBoard2.classList.add('hide');
-    helpBoard3.classList.add('animate');
-    helpBoard3.classList.remove('hide');
-    helpBoard.style.display = 'none';
-    helpBoard2.style.display = 'none';
-    helpBoard.style.zIndex = '3';
-    helpBoard2.style.zIndex = '3';
-    helpBoard3.style.zIndex = '4';
-    helpBoard3.style.display = '';
-    setTimeout(() => { // 0.5초 뒤에 helpBoard2에 no2color Class 추가
-        helpBoard3.classList.add('no3color');
-    }, 500);
-    setTimeout(() => { // 1초 뒤에 helpBoard2에 animate Class 삭제
-        // let helpBoard = document.querySelector('.help_board');
-        helpBoard3.classList.remove('animate');
-    }, 1000);
-}
-
+// home.onclick = () => {
+//     location.href = location.href
+// }
+let tabName = "home";
+let prveEl = helpBoard;
+document.addEventListener("click", (e) => {
+    if(e.target.classList[1] === "tab"){
+        if(tabName === e.target.classList[0]) return;
+        tabName = e.target.classList[0];
+        switch (e.target.classList[0]) {
+            case "home":
+                setTimeout(()=>{
+                    mainShow.classList.remove('animate-off')
+                    mainShow.classList.remove('hide');
+                    home.classList.add('checking');
+                    help_bar.classList.remove('checking');
+                    location_bar.classList.remove('checking');
+                    userguide_bar.classList.remove('checking');
+                    mainShow.classList.add('animate-active');
+                    mainShow.classList.remove('hide');
+                    mainShow.style.display = '';
+                    mainShow.style.zIndex = '4';
+                    helpBoard.style.display = 'none';
+                    helpBoard.style.zIndex = '3';
+                    locationBoard.style.zIndex = '3';
+                    locationBoard.style.display = 'none';
+                    userGuideBoard.style.zIndex = '3';
+                    userGuideBoard.style.display = 'none';
+                },300)
+                prveEl.classList.add('animate-off');
+                prveEl = mainShow;
+                break;
+            case "help_bar":
+                setTimeout(()=>{
+                    helpBoard.classList.remove('animate-off')
+                    mainShow.classList.add('hide');
+                    help_bar.classList.add('checking');
+                    home.classList.remove('checking');
+                    location_bar.classList.remove('checking');
+                    userguide_bar.classList.remove('checking');
+                    helpBoard.classList.add('animate-active');
+                    helpBoard.classList.remove('hide');
+                    mainShow.style.display = 'none';
+                    mainShow.style.zIndex = '3';
+                    helpBoard.style.display = '';
+                    helpBoard.style.zIndex = '4';
+                    locationBoard.style.display = 'none';
+                    locationBoard.style.zIndex = '3';
+                    userGuideBoard.style.display = 'none';
+                    userGuideBoard.style.zIndex = '3';
+                },300)
+                prveEl.classList.add('animate-off');
+                prveEl = helpBoard;
+                break;
+            case "location_bar":
+                setTimeout(()=>{
+                    locationBoard.classList.remove('animate-off')
+                    location_bar.classList.add('checking');
+                    home.classList.remove('checking');
+                    help_bar.classList.remove('checking');
+                    userguide_bar.classList.remove('checking');
+                    mainShow.classList.add('hide');
+                    helpBoard.classList.add('hide');
+                    locationBoard.classList.add('animate-active');
+                    locationBoard.classList.remove('hide');
+                    mainShow.style.display = 'none'
+                    mainShow.style.zIndex = '3'
+                    helpBoard.style.display = 'none';
+                    helpBoard.style.zIndex = '3';
+                    locationBoard.style.display = '';
+                    locationBoard.style.zIndex = '4';
+                    userGuideBoard.style.display = 'none';
+                    userGuideBoard.style.zIndex = '3';
+                },300)
+                prveEl.classList.add('animate-off');
+                prveEl = locationBoard;
+                tabName = "location_bar";
+                break;
+            case "userguide_bar":
+                setTimeout(() => {
+                    userGuideBoard.classList.remove('animate-off')
+                    home.classList.remove('checking');
+                    help_bar.classList.remove('checking');
+                    location_bar.classList.remove('checking');
+                    userguide_bar.classList.add('checking');
+                    mainShow.classList.add('hide');
+                    helpBoard.classList.add('hide');
+                    locationBoard.classList.add('hide');
+                    userGuideBoard.classList.add('animate-active');
+                    userGuideBoard.classList.remove('hide');
+                    mainShow.style.display = 'none';
+                    mainShow.style.zIndex = '3'
+                    helpBoard.style.display = 'none';
+                    helpBoard.style.zIndex = '3';
+                    locationBoard.style.display = 'none';
+                    locationBoard.style.zIndex = '3';
+                    userGuideBoard.style.display = '';
+                    userGuideBoard.style.zIndex = '4';
+                }, 300)
+                    prveEl.classList.add('animate-off');
+                    prveEl = userGuideBoard;
+                    tabName = "userguide_bar";
+                break;
+        
+            default:
+                break;
+        }
+    }
+})
 
 let logout_button = document.querySelector('.logout_button');
 
