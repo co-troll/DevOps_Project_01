@@ -68,12 +68,12 @@ const commentRender = (index) => {
 
     comment.dataset.index = item.no;
 
-    const img = loginUser.image;
+    const img = userArr.filter((i) => i.nick == item.author)[0].image;
     if (!img) {
         comment.innerHTML = `<div class="reply-user-img"></div>`
     } 
     else {
-        comment.innerHTML = `<div class="reply-user-img" style="background-image: "url(${img})"></div>`
+        comment.innerHTML = `<div class="reply-user-img" style="background-image: url(${img})"></div>`
     }
     comment.innerHTML += `
     <div class="reply-user-box">
@@ -111,12 +111,12 @@ const replyRender = (index, arr) => {
 
     reply.innerHTML = "<p>╰</p>";
 
-    const img = loginUser.image;
+    const img = userArr.filter((i) => i.nick == item.author)[0].image;
     if (!img) {
         reply.innerHTML += `<div class="reply-user-img"></div>`
     } 
     else {
-        reply.innerHTML += `<div class="reply-user-img" style="background-image: "url(${img})"></div>`
+        reply.innerHTML += `<div class="reply-user-img" style="background-image: url(${img})"></div>`
     }
     reply.innerHTML += `
     <div class="reply-user-box">

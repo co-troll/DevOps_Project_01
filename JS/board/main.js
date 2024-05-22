@@ -1,4 +1,6 @@
 const userArr = JSON.parse(localStorage.getItem("User")) || [];
+if (!sessionStorage.getItem("login"))
+    location.href = "./../../HTML/login/login.html";
 if (userArr.length == 0) {
     location.href = "./../../HTML/login/login.html";
 }

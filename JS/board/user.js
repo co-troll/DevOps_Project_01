@@ -13,3 +13,8 @@ logoutBtn.addEventListener("click", (e) => {
         location.href = "./../../HTML/login/login.html";
     }
 })
+
+const mypageBtn = document.querySelector(".user-setting");
+mypageBtn.addEventListener("click", (e) => {
+    location.href = "./../../HTML/mypage/mypage.html";
+})

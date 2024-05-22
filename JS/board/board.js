@@ -165,3 +165,8 @@ const boardInfo = (e) => {
         }
     }
 }
+
+const goHelp = (e) => {
+    if (e.target == document.querySelector(".board-top-help")) 
+        location.href = "./../../HTML/help/Board.html";
+}
