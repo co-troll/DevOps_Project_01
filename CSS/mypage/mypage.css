@@ -1,0 +1,399 @@
+
+
+
+body,html{
+    width: 100%;
+    height: 100%;
+}
+
+/* 전체 큰틀잡고있음 */
+.container{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    z-index: 3;
+    justify-content: center
+    /* position: relative; */
+}
+
+.black-bg{
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    background: rgba(0,0,0,0.5);
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* padding: 30px; */
+    z-index: 5;
+    visibility: visible;
+    /* opacity: 0; */
+    /* transition: all 1s; */
+}
+
+
+/* x표시 이미지 설정 */
+.x_imge {
+    width: 100%;
+    height: 30px;
+    display: flex;
+    justify-content: flex-end;
+    filter: invert();
+    z-index: 3;
+    margin: 10px;
+}
+
+.x_imge > img {
+    width: 50px;
+    height: 50px;
+    cursor: pointer;
+}
+
+.x_imge > img:hover{
+    width: 50px;
+    height: 50px;
+    display: flex;
+    filter: none;
+    color: aqua;
+    transition: 0.3s ease;
+    transform: rotate(360deg);
+}
+
+
+
+#top{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: #353a42;
+    border-radius: 20px;
+}
+
+
+.cute_imge_top{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 7px;
+    /* border: 1px solid; */
+    justify-content: flex-end
+}
+
+
+
+.cute_imge{
+    width: 120px;
+    height: 120px;
+}
+
+
+.nickchange{
+    width: 100%;
+    margin-left: 25%;
+}
+
+.nickchange > label{
+    font-size: 13px;
+    font-weight: 600;
+    color: #ffffff;
+    display: flex;
+    margin-bottom: 5px;
+    margin-left: 5px;
+}
+
+
+
+.nickchange > input{
+width: 320px;
+height: 40px;
+background-color: #1E1F22;
+border-radius: 7px;
+color: #ffff;
+margin-right: 7px;
+}
+
+
+
+
+/* 변경하기 인풋 */
+.change_button{
+    width: 75px;
+    height: 30px;
+    color: #ffffff;
+    font-weight: 500;
+    border-radius: 5px;
+    background-color:#feba00f4;
+/* 변경하기 버튼효과 주기 여기서부터 */
+    background-color: #feba00f4;
+    /* sets the background color of the button to yellow */
+     color: #ffffff;
+    /* sets the text color of the button to black */
+     padding: 5px 5px;
+    /* adds some padding to the button */
+     border: none;
+    /* remove the default border */
+     border-radius: 10px;
+    /* rounds the corners of the button */
+     font-size: 13px;
+    /* sets the font size of the button text */
+     font-weight: 500;
+    /* sets the font weight of the button text to bold */
+     cursor: pointer;
+    /* changes the cursor to a pointer when hovering over the button */
+     text-shadow: 2px 2px 3px #feba00f4;
+    /* adds a subtle shadow to the button text */
+     box-shadow: 2px 2px 3px #feba00f4;
+    /* adds a subtle shadow to the button */
+     transition: all 0.2s ease-in-out;
+    /* adds transition effect when hovering over the button */
+   }
+   
+   .change_button:hover {
+     background-color: #1c1a10;
+    /* changes the background color of the button to black when hovered */
+     color: #feba00f4;
+    /* changes the text color of the button to yellow when hovered */
+     transform: scale(1.1);
+    /* increases the size of the button slightly when hovered */
+   }
+   
+   .change_button:active {
+     transform: scale(0.97);
+   }
+   /* 변경하기 버튼효과 주기 여기까지 */
+
+
+   #hidden_see_frame{
+    display: flex;
+    align-items: center;
+    position: relative;
+   }
+
+.myimage{
+    visibility: hidden;
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+ .myimage > .tow_frame{
+    transform: scale(0);
+} 
+
+
+/* 이미지선택 글자만 */
+.imagechoice{
+    color: #ffff;
+    font-weight: 700;
+    font-size: 20px;
+    
+}
+
+
+.first_frame{
+    width: 320px;
+    height: 350px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-color: #4c4e54;
+    border-radius: 5px;
+    transform: scale(1);
+}
+
+.tow_frame{
+    width: 250px;
+    height: 250px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #313338;
+    border-radius: 5px;
+}
+
+
+.oen_hidden{
+    width: 170px;
+    height: 170px;
+    background-color: #5865F2;
+    border-radius: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/*  input 숨기기 */
+#chooseFile {
+    width: 30px;
+    height: 30px;
+    margin-left: 20px;
+    display: flex;
+    z-index: 4;
+    opacity: 0;
+}
+
+
+.jinimg{
+    width: 30px;
+    height: 30px;
+    border-radius: 7px;
+    filter: invert();
+    border: none;
+    position: absolute;
+    top: 50%;
+    left: 46%; 
+}
+.jinimg:hover{
+    width: 30px;
+    height: 30px;
+    border-radius: 7px;
+    filter: invert();
+    border: none;
+    transition: 0.3s ease;
+    transform: rotate(360deg);
+}
+
+
+/* 이미지 업로드 글씨 */
+.upload{
+    width: 200px;
+    height: 230px;
+    color: #b5bac1;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    font-weight: 700;
+    position: absolute;
+    
+}
+
+.see_frame{
+    width: 500px;
+    height: 380px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    justify-content: space-around;
+    flex-direction: column;
+}
+
+.writing_oen{
+    width: 170px;
+    border-radius: 100px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+
+
+.preview_oen{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    width: 170px;
+    height: 170px;
+    background-color: #feba00f4;
+    border-radius: 100px;
+    align-items: center;
+    overflow:hidden;
+}
+
+
+.upload2{
+    color: rgb(255, 255, 255);
+    font-weight: 700;
+    text-align: center;
+    margin-top: 12px;
+}
+
+
+
+
+.preview_oen > img{
+    width:90px;
+    height:90px;
+}
+.preview_oen > img:hover{
+    width:90px;
+    height:90px;
+    transition: 0.3s ease;
+    transform: rotate(360deg);
+}
+    
+
+/* 프로필 사진 추가를 품고있는 div */
+.profile{
+    display: flex;
+    flex-direction: column;
+    /* position: absolute; */
+    /* left: 40%; */
+}
+
+
+/* 프로필 추가 */
+.profile > label{
+    font-size: 13px;
+    font-weight: 700;
+    color: #ffffff;
+    margin: 5px;
+    
+}
+
+
+
+
+/* 프로필 추가 #인풋 */
+.profile > input {
+    width: 160px;
+    height: 40px;
+    color: #ffffff;
+    font-size: 15px;
+    font-weight: 400;
+    background-color: #feba00f4;
+    border-radius: 7px;
+    border: 0;
+/*  /* 프로필변경하기 버튼효과 여기서부터 */ 
+    --main-color: #feba00f4;
+    --main-alt-color: #fbf079;
+    height: 44px;
+    font-size: 16px!important;
+    line-height: 44px;
+    font-weight: 400;
+    color: #ffffff;
+    text-shadow: 0 1px 1px #f6e775;
+    text-transform: uppercase;
+    text-align: center;
+    -webkit-box-shadow: rgb(99 121 133 / 14%) 0 0 0 4px;
+    box-shadow: rgb(99 121 133 / 14%) 0 0 0 4px;
+    border-radius: 4px;
+    border: none;
+    border-top: 1px solid var(--main-alt-color);
+    border-bottom: 1px solid var(--main-color);
+    background-color: var(--main-color);
+    outline: 0;
+    cursor: pointer;
+    margin: 0 0 5px 4px;
+    padding: 0 20px;
+    transition: transform .3s ease;
+  }
+  
+  .profile > input:hover {
+    border-top-color: var(--main-alt-color);
+    border-bottom-color: var(--main-color);
+    background: -webkit-gradient(linear, left top, left bottom, from(#fae811), to(#f5d604));
+  }
+  
+  .profile > input:active {
+    transform: scale(0.7);
+  }
+  /* 프로필변경하기 버튼효과 여기까지 */
+
+
