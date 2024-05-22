@@ -155,11 +155,13 @@ const replyBtnSetting = (type, selected) => {
         case "modify":
             replyInput.dataset.type = "modify";
             replyInput.placeholder = "댓글 수정";
+            replyInput.focus();
             selected.classList.add("reply-select");
             break;
         case "reply":
             replyInput.dataset.type = "reply";
             replyInput.placeholder = "답글 달기";
+            replyInput.focus();
             selected.classList.add("reply-select");
             break;
     }

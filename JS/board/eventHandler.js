@@ -1,16 +1,17 @@
-// onmouseup
-document.addEventListener("mouseup", (e) => {
+// onclick
+document.addEventListener("click", (e) => {
+    if (e.ctrlKey && e.altKey) {
+        deleteForceBoard(arrByCategory()[e.target.dataset.index]);
+        deleteForceComment(e.target);
+        return;
+    }
     categorySelect(e);
     boardSelect(e);
     boardInfo(e);
-})
-
-// onmousedown
-document.addEventListener("mousedown", (e) => {
     if (e.target === document.querySelector(".category-popup"))
         categoryPopupLeave();
     if (e.target === document.querySelector(".board-popup")) 
-        boardPopupLeave();
+        boardPopupLeave();   
 })
 
 // ondragstart
@@ -33,11 +34,13 @@ document.addEventListener("drop", (e) => {
     boardDrop(e);
 })
 
+// onkeydown
 document.addEventListener("keydown", (e) => {
     let key = e.key || e.keyCode;
     if (key === "Escape" || key === 27) {
         boardPopupLeave();
         categoryPopupLeave();
+        replyBtnSetting("write");
     }
 
     if (key === "Enter" || key === 13) {
