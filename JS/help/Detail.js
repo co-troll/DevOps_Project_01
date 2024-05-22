@@ -6,12 +6,11 @@ function getQueryParam(param) {
 }
 
 let writeNumPage = getQueryParam('writeNum');
-
 if (writeNumPage !== null){
 
     let showContent = JSON.parse(localStorage.getItem('Board'));
     let selectedContent = showContent.find(content => content.writeNum == writeNumPage);
-    console.log(showContent)
+    console.log(selectedContent)
 
     if (selectedContent !== null) {
         let category = document.querySelector('._category'); // 카테고리
@@ -20,6 +19,8 @@ if (writeNumPage !== null){
         let nick = document.querySelector('._nick'); // 닉네임
         let date = document.querySelector('._date'); // 날짜
 
+        if(category !== undefined){
+        }
         category.innerHTML = selectedContent.category;
         title.innerHTML = selectedContent.title;
         nick.innerHTML = selectedContent.nick;
@@ -38,7 +39,12 @@ goBoard.onclick = () => { // 집 모양 누르면 메인페이지로 이동
 let updateContent = document.querySelector('.update_content');
 
 updateContent.addEventListener('click', () => {
-    location.href = ('../../HTML/help/update.html');
+    let showContent = JSON.parse(localStorage.getItem('Board'));
+    let selectedContent = showContent.find(content => content.writeNum == writeNumPage);
+    let getUser = sessionStorage.getItem('login');
+    if(getUser === selectedContent.id){
+        location.href = ('../../HTML/help/update.html');
+    }
     return sessionStorage.setItem('update', writeNumPage);
 });
 
@@ -47,12 +53,16 @@ let delete_content = document.querySelector('.main_board'); // 게시글 삭제 
 
 delete_content.addEventListener('click', () => { // 게시글 삭제, 세션 값 비교해서 게시글 작성한 아이디가 다르면 삭제 못하게
     let showContent = JSON.parse(localStorage.getItem('Board'));
+    let getUser = sessionStorage.getItem('login');
     let selectedContent = showContent.find(content => content.writeNum == writeNumPage);
     for(let i = 0; i < showContent.length; i++){
-        if(selectedContent === showContent[i]){
-            showContent.splice(writeNumPage-1, 1);
-            localStorage.setItem('Board', JSON.stringify(showContent));
-            location.href = ('../../HTML/help/Board.html')
+        if(selectedContent.id === getUser){
+            if(selectedContent === showContent[i]){
+                showContent.splice(writeNumPage-1, 1);
+                showContent[i].writeNum = i + 1;
+                localStorage.setItem('Board', JSON.stringify(showContent));
+                location.href = ('../../HTML/help/Board.html');
+            }
         }
     }
 });
