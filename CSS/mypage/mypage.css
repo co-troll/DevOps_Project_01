@@ -1,3 +1,5 @@
+
+
 body,html{
     width: 100%;
     height: 100%;
@@ -11,21 +13,37 @@ body,html{
     flex-direction: column;
     align-items: center;
     position: relative;
+    z-index: 3;
+    justify-content: center
     /* position: relative; */
+}
+
+.black-bg{
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    background: rgba(0,0,0,0.5);
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* padding: 30px; */
+    z-index: 5;
+    visibility: visible;
+    /* opacity: 0; */
+    /* transition: all 1s; */
 }
 
 
 /* x표시 이미지 설정 */
 .x_imge {
     width: 100%;
-    height: 50px;
+    height: 30px;
     display: flex;
     justify-content: flex-end;
     filter: invert();
-    z-index: 4;
-    text-align: end;
-    margin-right: 15%;
-    margin-top: 30px;
+    z-index: 3;
+    margin: 10px;
 }
 
 .x_imge > img {
@@ -52,12 +70,13 @@ body,html{
     display: flex;
     flex-direction: column;
     align-items: center;
+    background: #353a42;
+    border-radius: 20px;
 }
 
 
 .cute_imge_top{
     width: 100%;
-    height: 200px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -74,13 +93,18 @@ body,html{
 }
 
 
-
+.nickchange{
+    width: 100%;
+    margin-left: 25%;
+}
 
 .nickchange > label{
     font-size: 13px;
     font-weight: 600;
     color: #ffffff;
     display: flex;
+    margin-bottom: 5px;
+    margin-left: 5px;
 }
 
 
@@ -91,7 +115,7 @@ height: 40px;
 background-color: #1E1F22;
 border-radius: 7px;
 color: #ffff;
-display: inline;
+margin-right: 7px;
 }
 
 
@@ -145,7 +169,7 @@ display: inline;
    /* 변경하기 버튼효과 주기 여기까지 */
 
 
-   .hidden_see_frame{
+   #hidden_see_frame{
     display: flex;
     align-items: center;
     position: relative;
@@ -154,12 +178,12 @@ display: inline;
 .myimage{
     visibility: hidden;
     position: absolute;
-    left: 50px;
-    top: 33px;
+    left: 0;
+    top: 0;
 }
-/* .myimage > .tow_frame{
+ .myimage > .tow_frame{
     transform: scale(0);
-} */
+} 
 
 
 /* 이미지선택 글자만 */
@@ -181,7 +205,6 @@ display: inline;
     background-color: #4c4e54;
     border-radius: 5px;
     transform: scale(1);
-    transition: 0.2s;
 }
 
 .tow_frame{
@@ -200,12 +223,20 @@ display: inline;
     height: 170px;
     background-color: #5865F2;
     border-radius: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 /*  input 숨기기 */
-/* #chooseFile {
-    visibility: hidden;
-} */
+#chooseFile {
+    width: 30px;
+    height: 30px;
+    margin-left: 20px;
+    display: flex;
+    z-index: 4;
+    opacity: 0;
+}
 
 
 .jinimg{
@@ -216,7 +247,7 @@ display: inline;
     border: none;
     position: absolute;
     top: 50%;
-    left: 46%;
+    left: 46%; 
 }
 .jinimg:hover{
     width: 30px;
@@ -224,9 +255,6 @@ display: inline;
     border-radius: 7px;
     filter: invert();
     border: none;
-    position: absolute;
-    top: 50%;
-    left: 46%;
     transition: 0.3s ease;
     transform: rotate(360deg);
 }
@@ -234,11 +262,14 @@ display: inline;
 
 /* 이미지 업로드 글씨 */
 .upload{
+    width: 200px;
+    height: 230px;
     color: #b5bac1;
     display: flex;
+    align-items: flex-end;
+    justify-content: center;
     font-weight: 700;
     position: absolute;
-    /* display: none; */
     
 }
 
@@ -248,12 +279,16 @@ display: inline;
     display: flex;
     align-items: center;
     justify-content: center;
-    justify-content: space-around
+    justify-content: space-around;
+    flex-direction: column;
 }
 
 .writing_oen{
     width: 170px;
     border-radius: 100px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
 }
 
 
@@ -275,6 +310,7 @@ display: inline;
     color: rgb(255, 255, 255);
     font-weight: 700;
     text-align: center;
+    margin-top: 12px;
 }
 
 
@@ -304,9 +340,9 @@ display: inline;
 /* 프로필 추가 */
 .profile > label{
     font-size: 13px;
-    font-weight: 600;
+    font-weight: 700;
     color: #ffffff;
-    padding: 5px;
+    margin: 5px;
     
 }
 
