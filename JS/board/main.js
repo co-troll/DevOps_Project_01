@@ -65,7 +65,7 @@ const render = (selectedCategory = null, selectedBoardNo = null) => {
     else 
         boardList.parentNode.style.paddingRight = "0px";    
 
-    commentListRender();
+    commentListRender("render");
     
     console.log("render");
 }
@@ -103,7 +103,7 @@ const init = () => {
     else
         boardList.parentNode.style.paddingRight = "0px";
 
-    commentListRender();
+    commentListRender("render");
 
     console.log("init");
 }

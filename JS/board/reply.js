@@ -43,7 +43,7 @@ const arrByBoardAndCategory = (categoryNo = currentCategoryNo(), boardNo = curre
 }
 
 // 댓글리스트 랜더 함수
-const commentListRender = () => {
+const commentListRender = (type) => {
     document.querySelector(".reply-input").value = null;
     replyBtnSetting("write");
     const commentList = document.querySelector(".reply-box > ul");
@@ -51,7 +51,7 @@ const commentListRender = () => {
     if (!arrByBoardAndCategory().length) 
         return;
     for (let i = 0; i < arrByBoardAndCategory().length; i++) {
-        commentRender(i);
+        commentRender(i, type);
     }
     
     commentList.lastChild.scrollIntoView(); 
@@ -59,7 +59,7 @@ const commentListRender = () => {
 }
 
 // 댓글 랜더 함수
-const commentRender = (index) => {
+const commentRender = (index , type) => {
     const replyBox = document.querySelector(".reply-box > ul");
     const item = arrByBoardAndCategory()[index];
     const comment = document.createElement("li");
@@ -68,7 +68,9 @@ const commentRender = (index) => {
 
     comment.dataset.index = item.no;
 
-    const img = userArr.filter((i) => i.nick == item.author)[0].image;
+    const img = userArr.filter((i) => i.id == item.author)[0]? userArr.filter((i) => i.id == item.author)[0].image: null;
+    const author = userArr.filter((i) => i.id == item.author)[0].nick;
+
     if (!img) {
         comment.innerHTML = `<div class="reply-user-img"></div>`
     } 
@@ -77,7 +79,7 @@ const commentRender = (index) => {
     }
     comment.innerHTML += `
     <div class="reply-user-box">
-        <span class="reply-user-name">${item.author}</span>
+        <span class="reply-user-name">${author}</span>
         <span class="reply-user-comment">${item.comment}</span>
     </div>
     <div class="reply-icons">
@@ -95,12 +97,12 @@ const commentRender = (index) => {
 
     replyBox.append(comment);
     for (let i = 0; i < item.Reply.length; i++) {
-        replyRender(i, item);
+        replyRender(i, type, item);
     }
 }
 
 // 대댓글 랜더함수
-const replyRender = (index, arr) => {
+const replyRender = (index, type, arr) => {
     const replyBox = document.querySelector(".reply-box > ul");
     const item = arr.Reply[index];
     const reply = document.createElement("li");
@@ -111,7 +113,9 @@ const replyRender = (index, arr) => {
 
     reply.innerHTML = "<p>╰</p>";
 
-    const img = userArr.filter((i) => i.nick == item.author)[0].image;
+    const img = userArr.filter((i) => i.id == item.author)[0]? userArr.filter((i) => i.id == item.author)[0].image: null;
+    const author = userArr.filter((i) => i.id == item.author)[0].nick;
+    
     if (!img) {
         reply.innerHTML += `<div class="reply-user-img"></div>`
     } 
@@ -120,7 +124,7 @@ const replyRender = (index, arr) => {
     }
     reply.innerHTML += `
     <div class="reply-user-box">
-        <span class="reply-user-name">${item.author}</span>
+        <span class="reply-user-name">${author}</span>
         <span class="reply-user-comment">${item.reply}</span>
     </div>
     <div class="reply-icons">
@@ -210,7 +214,7 @@ const writeComment = () => {
     comment.setBoardNo(boardNo);
     comment.setNo(arrByBoardAndCategory(categoryNo, boardNo).length);
     comment.setComment(commentInput);
-    comment.setAuthor(loginUser.nick);
+    comment.setAuthor(loginUser.id);
     comment.setReply();
 
     commentArr.push({
@@ -222,7 +226,7 @@ const writeComment = () => {
         "Reply": comment.getReply()
     });
     localStorage.setItem("Comment", JSON.stringify(commentArr));
-    commentListRender();
+    commentListRender("write");
     console.log("comment");
 }
 
@@ -235,7 +239,7 @@ const modifyComment = () => {
             if (commentArr[i] == arr) {
                 commentArr[i].comment = document.querySelector(".reply-input").value;
                 localStorage.setItem("Comment", JSON.stringify(commentArr));
-                    commentListRender();
+                    commentListRender("write");
                     console.log("modify");
                     return;
             }
@@ -247,7 +251,7 @@ const modifyComment = () => {
             if (commentArr[i] == arr) {
                 commentArr[i].Reply[selectedComment.dataset.index].reply = document.querySelector(".reply-input").value;
                 localStorage.setItem("Comment", JSON.stringify(commentArr));
-                    commentListRender();
+                    commentListRender("write");
                     console.log("modify");
                     return;
             }
@@ -264,7 +268,7 @@ const replyComment = () => {
         if (commentArr[i] == arr) {
             reply.setNo(commentArr[i].Reply.length);
             reply.setReply(document.querySelector(".reply-input").value)
-            reply.setAuthor(loginUser.nick);
+            reply.setAuthor(loginUser.id);
 
             commentArr[i].Reply.push({
                 "no": reply.getNo(),
@@ -272,7 +276,7 @@ const replyComment = () => {
                 "author": reply.getAuthor(),
             })
             localStorage.setItem("Comment", JSON.stringify(commentArr));
-            commentListRender();
+            commentListRender("write");
             console.log("reply");
             return;
         }
@@ -289,7 +293,7 @@ const deleteForceComment = (comment) => {
                 for (let j of arrByBoardAndCategory()) 
                     j.no = index++;
                 localStorage.setItem("Comment", JSON.stringify(commentArr));
-                commentListRender();
+                commentListRender("render");
                 console.log("delete");
                 return;
             }
@@ -304,7 +308,7 @@ const deleteForceComment = (comment) => {
                 for (let j of arr.Reply) 
                     j.no = index++;
                 localStorage.setItem("Comment", JSON.stringify(commentArr));
-                commentListRender();
+                commentListRender("render");
                 console.log("modify");
                 return;
             }

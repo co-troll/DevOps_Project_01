@@ -95,7 +95,7 @@ const createBoard = (e) => {
     board.setNo(arrByCategory(categoryNo).length);
     board.setTitle(boardTitleInput.value);
     board.setContent(boardContentInput.value);
-    board.setAuthor(loginUser.nick);
+    board.setAuthor(loginUser.id);
     board.setView();
     board.setDate();
 

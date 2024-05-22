@@ -61,10 +61,10 @@ for(let i = 0; i < nick_change.length; i++){
             newImg.src = nick_change[i].image;
             
             
-            newImg.style.width = "170px";
-            newImg.style.height = "170px";
+            // newImg.style.width = "170px";
+            // newImg.style.height = "170px";
+            // newImg.style.borderRadius = "50%";
             newImg.draggable = false;
-            newImg.style.borderRadius = "50%";
             
             document.querySelector('.preview_oen').append(newImg);
             document.querySelector('#test').style.visibility = 'hidden';
@@ -127,10 +127,10 @@ chooseFile.addEventListener("change", (e) => {
         newImg.src = imgBase64;
 
 
-        newImg.style.width = "170px";
-        newImg.style.height = "170px";
+        // newImg.style.width = "170px";
+        // newImg.style.height = "170px";
+        // newImg.style.borderRadius = "50%";
         newImg.draggable = false;
-        newImg.style.borderRadius = "50%";
        
         document.querySelector('.preview_oen').append(newImg);
         document.querySelector('#test').style.visibility = 'hidden';

@@ -315,15 +315,7 @@ margin-right: 7px;
 }
 
 
-
-
-.preview_oen > img{
-    width:90px;
-    height:90px;
-}
 .preview_oen > img:hover{
-    width:90px;
-    height:90px;
     transition: 0.3s ease;
     transform: rotate(360deg);
 }

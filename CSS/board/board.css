@@ -304,6 +304,7 @@ html, body {
     justify-content: center;
     align-items: center;
     background-size: cover;
+    background-position: center;
 }
 
 .user-box {
@@ -448,6 +449,7 @@ html, body {
     padding: 8px;
     color: white;
     flex-direction: column;
+    position: relative;
 
 }
 
@@ -457,6 +459,22 @@ html, body {
     font-weight: bold;
     overflow: hidden;
     text-overflow: ellipsis;
+}
+
+.board-info-img {
+    background-image: url();
+    min-width: 48px;
+    height: 48px;
+    background-color: #5865f2;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-size: cover;
+    background-position: center;
+    position: absolute;
+    top: 16px;
+    right: 16px;
 }
 
 .board-info-field {
@@ -528,6 +546,7 @@ html, body {
     justify-content: center;
     align-items: center;
     background-size: cover;
+    background-position: center;
 }
 
 .reply-user-box {

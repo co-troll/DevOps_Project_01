@@ -34,19 +34,49 @@ haveId.addEventListener('click', function(){ // 아이디 이미 있으세요? �
 
 })
 
-
+const idCheck = document.querySelector('.regidInput');
 const check = document.querySelector('.regPasswordInput');
 const reCheck = document.querySelector('.passwordreInput');
+const nickCheck = document.querySelector(".nicknameInput");
+const idMessage = document.querySelector('.id-message');
 const mismatchMessage = document.querySelector('.mismatch-message');
 const strongPasswordMessage = document.querySelector('.strong-message');
+const nickMessage = document.querySelector(".nick-message");
+
+function strongId(str) {
+    return /^(?=.*[a-zA-Z\d])[a-zA-z]+[a-zA-Z\d]{1,19}$/.test(str);
+}
 
 function strongPassword(str) {
     return /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$/.test(str);
 }
 
+function strongNick(str) {
+    return /^(?=.*[a-zA-Zㄱ-힣\d])[a-zA-Zㄱ-힣\d]{1,10}$/.test(str);
+}
+
 function isMatch(reg_pw1, reg_pw2) {
     return reg_pw1 === reg_pw2;
 }
+
+
+idCheck.onkeyup = function () { // 비밀번호칸 정규식 함수
+    // 값을 입력한 경우
+    if (idCheck.value.length !== 0) {
+        if (strongId(idCheck.value)) {
+            idMessage.classList.add('hide'); // 실패 메시지가 가려져야 함
+            idMessage.classList.remove('text_show'); // 'text_show' 클래스 제거
+        } else {
+            idMessage.classList.remove('hide'); // 실패 메시지가 보여야 함
+            idMessage.classList.add('text_show'); // 'text_show' 클래스 추가
+        }
+    } else {
+        // 값을 입력하지 않은 경우 (지웠을 때)
+        // 모든 메시지를 가린다.
+        idMessage.classList.add('hide');
+        idMessage.classList.remove('text_show'); // 'text_show' 클래스 제거
+    }
+};
 
 check.onkeyup = function () { // 비밀번호칸 정규식 함수
     // 값을 입력한 경우
@@ -76,6 +106,24 @@ reCheck.onkeyup = function () { // 비밀번호 확인 이벤트 함수
         }
     } else {
         mismatchMessage.classList.add('hide'); // 실패 메시지가 가려져야 함
+    }
+};
+
+nickCheck.onkeyup = function () { // 닉네임 정규식 함수
+    // 값을 입력한 경우
+    if (nickCheck.value.length !== 0) {
+        if (strongNick(nickCheck.value)) {
+            nickMessage.classList.add('hide'); // 실패 메시지가 가려져야 함
+            nickMessage.classList.remove('text_show'); // 'text_show' 클래스 제거
+        } else {
+            nickMessage.classList.remove('hide'); // 실패 메시지가 보여야 함
+            nickMessage.classList.add('text_show'); // 'text_show' 클래스 추가
+        }
+    } else {
+        // 값을 입력하지 않은 경우 (지웠을 때)
+        // 모든 메시지를 가린다.
+        nickMessage.classList.add('hide');
+        nickMessage.classList.remove('text_show'); // 'text_show' 클래스 제거
     }
 };
 
