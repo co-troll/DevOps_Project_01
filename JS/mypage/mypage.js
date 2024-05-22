@@ -136,4 +136,3 @@ document.querySelector(".x_imge").addEventListener("click",function(){
 
 
 
-
