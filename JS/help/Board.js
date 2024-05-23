@@ -196,3 +196,19 @@ logout_button.onclick = () => {
 }
 
 // 클릭을 했을때, 화면이 지워지면서 밑으로 접히는 애니메이션 넣기
+
+
+document.querySelector('.police1').onclick = () => {
+    location.href = 'https://www.police.go.kr/index.do';
+}
+document.querySelector('.police2').onclick = () => {
+    location.href = 'https://www.police.go.kr/index.do';
+}
+
+document.querySelector('.nuna').onclick = () => {
+    location.href = '../../HTML/help/fake.html';
+}
+
+document.querySelector('.fake').onclick = () => {
+    location.href = 'http://127.0.0.1:5500/HTML/help/becareful.html';
+}

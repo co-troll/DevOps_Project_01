@@ -19,8 +19,6 @@ if (writeNumPage !== null){
         let nick = document.querySelector('._nick'); // 닉네임
         let date = document.querySelector('._date'); // 날짜
 
-        if(category !== undefined){
-        }
         category.innerHTML = selectedContent.category;
         title.innerHTML = selectedContent.title;
         nick.innerHTML = selectedContent.nick;
@@ -59,11 +57,11 @@ delete_content.addEventListener('click', () => { // 게시글 삭제, 세션 값
         if(selectedContent.id === getUser){
             if(selectedContent === showContent[i]){
                 showContent.splice(writeNumPage-1, 1);
-                showContent[i].writeNum = i + 1;
-                localStorage.setItem('Board', JSON.stringify(showContent));
                 location.href = ('../../HTML/help/Board.html');
             }
         }
+    showContent[i].writeNum = i + 1;
+    localStorage.setItem('Board', JSON.stringify(showContent));
     }
 });
 
