@@ -1,7 +1,6 @@
 let getValue = JSON.parse(sessionStorage.getItem('update'));
-console.log(getValue)
 let getBoardValue = JSON.parse(localStorage.getItem('Board'));
-console.log(getBoardValue)
+
 
 for(let i = 0; i < getBoardValue.length; i++){
     if(getValue === getBoardValue[i].writeNum){
@@ -31,7 +30,7 @@ updateContent.addEventListener('click', () => {
             getBoardValue[i].category = categoryList.value;
 
             localStorage.setItem('Board', JSON.stringify(getBoardValue));
-            location.href = '../../HTML/help/Board.html';
+            location.href = `../../HTML/help/Detail.html?writeNum=${getValue}`;
         }
     }
 });
