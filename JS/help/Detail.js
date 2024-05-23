@@ -8,7 +8,7 @@ function getQueryParam(param) {
 let writeNumPage = getQueryParam('writeNum');
 if (writeNumPage !== null){
 
-    let showContent = JSON.parse(localStorage.getItem('Board'));
+    let showContent = JSON.parse(localStorage.getItem('Help'));
     let selectedContent = showContent.find(content => content.writeNum == writeNumPage);
     console.log(selectedContent)
 
@@ -37,7 +37,7 @@ goBoard.onclick = () => { // 집 모양 누르면 메인페이지로 이동
 let updateContent = document.querySelector('.update_content');
 
 updateContent.addEventListener('click', () => {
-    let showContent = JSON.parse(localStorage.getItem('Board'));
+    let showContent = JSON.parse(localStorage.getItem('Help'));
     let selectedContent = showContent.find(content => content.writeNum == writeNumPage);
     let getUser = sessionStorage.getItem('login');
     if(getUser === selectedContent.id){
@@ -50,7 +50,7 @@ updateContent.addEventListener('click', () => {
 let delete_content = document.querySelector('.main_board'); // 게시글 삭제 버튼
 
 delete_content.addEventListener('click', () => { // 게시글 삭제, 세션 값 비교해서 게시글 작성한 아이디가 다르면 삭제 못하게
-    let showContent = JSON.parse(localStorage.getItem('Board'));
+    let showContent = JSON.parse(localStorage.getItem('Help'));
     let getUser = sessionStorage.getItem('login');
     let selectedContent = showContent.find(content => content.writeNum == writeNumPage);
     for(let i = 0; i < showContent.length; i++){
@@ -61,7 +61,7 @@ delete_content.addEventListener('click', () => { // 게시글 삭제, 세션 값
             }
         }
     showContent[i].writeNum = i + 1;
-    localStorage.setItem('Board', JSON.stringify(showContent));
+    localStorage.setItem('Help', JSON.stringify(showContent));
     }
 });
 

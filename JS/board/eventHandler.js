@@ -10,6 +10,7 @@ document.addEventListener("click", (e) => {
     categorySelect(e);
     boardSelect(e);
     boardInfo(e);
+    goHelp(e);
     if (e.target === document.querySelector(".category-popup"))
         categoryPopupLeave();
     if (e.target === document.querySelector(".board-popup")) 

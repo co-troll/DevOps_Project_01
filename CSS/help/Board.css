@@ -38,6 +38,7 @@ body {
   border: 2px solid #fff;
   border-radius: 40px;
   box-shadow: 4px 5px 5px 1px rgba(0, 0, 0, 0.2);
+  margin-left: 10px;
 }
 
 .main_container > header button:hover{
@@ -58,7 +59,7 @@ body {
   bottom: 9px;
 }
 
-.main_container > header img{
+.main_container > header img, .main_container > header svg {
   width: 30px;
   height: 30px;
   filter: invert(1);

@@ -4,7 +4,7 @@ let createContent = document.querySelector('.create_content');
 let categoryList = document.querySelector('.category_list');
 
 
-let pageLoad = JSON.parse(localStorage.getItem('Board')) || []; // 페이지 로드시 board local 빈값이면 빈배열 반환
+let pageLoad = JSON.parse(localStorage.getItem('Help')) || []; // 페이지 로드시 board local 빈값이면 빈배열 반환
 
 class Board {
     constructor(category, writeNum, id, title, content, nick, date, view){
@@ -23,7 +23,7 @@ createContent.onclick = function move() { // 작성 버튼 누를 시 작성 값
     let content = document.querySelector('.text_content');
     let title = document.querySelector('.text_title');
     let categoryList = document.querySelector('.category_list');
-    let write_num = JSON.parse(localStorage.getItem('Board'));
+    let write_num = JSON.parse(localStorage.getItem('Help'));
     let view = "0";
 
     function getDate() { // 로컬에 날짜 출력하려고 만든 함수
@@ -67,7 +67,7 @@ createContent.onclick = function move() { // 작성 버튼 누를 시 작성 값
         return;
     }
     pageLoad.push(boardObject)
-    localStorage.setItem('Board', JSON.stringify(pageLoad));
+    localStorage.setItem('Help', JSON.stringify(pageLoad));
     location.href = 'Detail.html?writeNum=' + write_num;
 }
 

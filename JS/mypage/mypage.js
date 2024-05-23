@@ -68,6 +68,13 @@ for(let i = 0; i < nick_change.length; i++){
             
             document.querySelector('.preview_oen').append(newImg);
             document.querySelector('#test').style.visibility = 'hidden';
+        } 
+        else {
+            const initImg = document.querySelector(".preview_oen > img");
+            initImg.style.width = "120px";
+            initImg.style.height = "120px";
+            initImg.style.borderRadius = "50%";
+            initImg.draggable = false;
         }
     }
 }

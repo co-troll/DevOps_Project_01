@@ -8,7 +8,7 @@ createList.onclick = function () {
 
 function render (){
     let listCreate = document.querySelector('.board_list');
-    let show = JSON.parse(localStorage.getItem('Board'));
+    let show = JSON.parse(localStorage.getItem('Help'));
     
     if(show !== null){
         for(let i = 0; i < show.length; i++){
@@ -31,7 +31,7 @@ function render (){
 
             list_title.onclick = function(){
                 show[i].view = ++show[i].view;
-                localStorage.setItem('Board', JSON.stringify(show));
+                localStorage.setItem('Help', JSON.stringify(show));
             }
             // a 태그를 클릭했을때 로컬스토리지 view 값이 1증가하게 해야됨.
             list_title.href = `../../HTML/help/Detail.html?writeNum=${i + 1}`;
@@ -193,6 +193,12 @@ logout_button.onclick = () => {
         alert('로그아웃 됬습니다.');
         location.href = '../../HTML/login/login.html';
     }
+}
+
+let exit_button = document.querySelector('.exit_button');
+
+exit_button.onclick = () => {
+    location.href = '../../HTML/board/board.html';
 }
 
 // 클릭을 했을때, 화면이 지워지면서 밑으로 접히는 애니메이션 넣기

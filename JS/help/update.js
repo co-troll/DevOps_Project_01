@@ -1,5 +1,5 @@
 let getValue = JSON.parse(sessionStorage.getItem('update'));
-let getBoardValue = JSON.parse(localStorage.getItem('Board'));
+let getBoardValue = JSON.parse(localStorage.getItem('Help'));
 
 
 for(let i = 0; i < getBoardValue.length; i++){
@@ -29,7 +29,7 @@ updateContent.addEventListener('click', () => {
             getBoardValue[i].content = content.value;
             getBoardValue[i].category = categoryList.value;
 
-            localStorage.setItem('Board', JSON.stringify(getBoardValue));
+            localStorage.setItem('Help', JSON.stringify(getBoardValue));
             location.href = `../../HTML/help/Detail.html?writeNum=${getValue}`;
         }
     }
