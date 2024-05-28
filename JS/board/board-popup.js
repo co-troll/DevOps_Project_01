@@ -63,7 +63,7 @@ const boardPopupEnter = (type, item) => {
             boardBtn.disabled = false;
             boardTitle.innerHTML = "게시글 수정";
             boardTitleInput.value = selectArr[item.dataset.index].title;
-            boardContentInput.placeholder = selectArr[item.dataset.index].content;
+            boardContentInput.value = selectArr[item.dataset.index].content;
             boardBtn.innerHTML = "수정";
             boardBtn.onclick = () => {
                 modifyBoard(selectArr[item.dataset.index]);
