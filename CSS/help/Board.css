@@ -228,7 +228,7 @@ background-color: rgba(0, 0, 0, 0.2);
 
 .main_show{
 width: 100%;
-height: 0;
+/* height: 0; */
 padding: 0px 20px;
 z-index: 3;
 }
@@ -319,14 +319,14 @@ animation: animate_slide2 1s ease;
 
 @keyframes animate_slide1 {
 0%{
-  transform: scale(1, 1);
+  transform: scale(1, 0.002);
 }100%{
-  transform: scale(1, 0);}
+  transform: scale(0.2, 0.002);}
 }
 
 @keyframes animate_slide2 {
 0%{
-  transform: scale(1, 0);
+  transform: scale(1, 0.002);
 }100%{
   transform: scale(1, 1);}
 }
