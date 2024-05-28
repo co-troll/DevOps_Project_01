@@ -195,7 +195,7 @@ class Board {
                 lines == 3 ? POINTS.TRIPLE :
                     lines == 4 ? POINTS.TETRIS :
                         0;
-        console.log(this.combo);
+        pointsSound.play();
         return (account.level + 1) * lineClearPoint * this.combo++;
     }
 }

@@ -30,6 +30,7 @@ const categoryPopupEnter = (type) => {
             categoryTitle.innerHTML = "카테고리 생성";
             categoryDes.innerHTML = "이미지 업로드";
             categoryInput.placeholder = "";
+            categoryInput.value = "";
             categoryBtn.innerHTML = "생성";
             categoryBtn.onclick = (e) => {
                 createCategory(e);
@@ -50,6 +51,7 @@ const categoryPopupEnter = (type) => {
             categoryTitle.innerHTML = "카테고리 삭제";
             categoryDes.innerHTML = "삭제하시려면 카테고리 이름을 입력해주세요.";
             categoryInput.placeholder = document.querySelector(".selected > div").innerHTML;
+            categoryInput.value = "";
             categoryBtn.innerHTML = "삭제";
             categoryBtn.onclick = (e) => {
                 deleteCategory(e);
