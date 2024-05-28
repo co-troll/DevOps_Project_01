@@ -57,7 +57,7 @@ const handleKeyPress = (event) => {
         let p = moves[event.keyCode](board.piece);
         if (event.keyCode == KEY.SPACE) {
             if (!paused)
-                dropSound.play();
+                harddropSound.play();
             else
                 return;
             while (board.valid(p)) {
@@ -68,8 +68,23 @@ const handleKeyPress = (event) => {
             board.piece.hardDrop();
         }
         else if (board.valid(p)) {
-            if (!paused)
-                movesSound.play();
+            if (paused)
+                return;
+            else {
+                switch (event.keyCode) {
+                    case KEY.LCTRL:
+                    case KEY.LALT:
+                        rotateSound.play();
+                        break;
+                    case KEY.DOWN:
+                        softdropSound.play();
+                        break;
+                    case KEY.LEFT:
+                    case KEY.RIGHT:
+                        moveSound.play();
+                        break;
+                }
+            }
             board.piece.move(p);
             if (event.keyCode == KEY.DOWN && !paused)
                 account.score += POINTS.SOFT_DROP;
@@ -85,13 +100,14 @@ const handleBtnPress = (event) => {
         gameOver();
     }
     else if (moves[event]) {
+        event.preventDefault();
         if (paused) {
             return;
         }
-        let p = moves[event](board.piece);
-        if (event == KEY.SPACE) {
+        let p = moves[event.keyCode](board.piece);
+        if (event.keyCode == KEY.SPACE) {
             if (!paused)
-                dropSound.play();
+                harddropSound.play();
             else
                 return;
             while (board.valid(p)) {
@@ -102,10 +118,25 @@ const handleBtnPress = (event) => {
             board.piece.hardDrop();
         }
         else if (board.valid(p)) {
-            if (!paused)
-                movesSound.play();
+            if (paused)
+                return;
+            else {
+                switch (event.keyCode) {
+                    case KEY.LCTRL:
+                    case KEY.LALT:
+                        rotateSound.play();
+                        break;
+                    case KEY.DOWN:
+                        softdropSound.play();
+                        break;
+                    case KEY.LEFT:
+                    case KEY.RIGHT:
+                        moveSound.play();
+                        break;
+                }
+            }
             board.piece.move(p);
-            if (event == KEY.DOWN && !paused)
+            if (event.keyCode == KEY.DOWN && !paused)
                 account.score += POINTS.SOFT_DROP;
         }
     }
@@ -183,14 +214,20 @@ const gameOver = () => {
     playBtn.disabled = false;
     paused = true;
     sound.pause();
-    finishSound.play();
+    gameoverSound.play();
     checkHighScore(account.score);
 };
 const pause = () => {
     if (!requestId) {
         paused = false;
         animate();
-        backgroundSound.play();
+        if (account.level > 9) {
+            sound.pause();
+            backgroundfastSound.play();
+        }
+        else {
+            backgroundSound.play();
+        }
         return;
     }
     paused = true;

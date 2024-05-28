@@ -93,6 +93,11 @@ class Board {
             account.lines += lines;
             if (account.lines >= LINE_PER_LEVELS) {
                 account.level++;
+                levelupSound.play();
+                if (account.level > 9) {
+                    sound.pause();
+                    backgroundfastSound.play();
+                }
                 account.lines -= LINE_PER_LEVELS;
                 time.level = LEVEL[account.level];
             }
@@ -190,12 +195,31 @@ class Board {
         return this.typeIdArr.splice(typeId, 1)[0];
     }
     getLinesClearedPoints(lines) {
-        const lineClearPoint = lines == 1 ? POINTS.SINGLE :
+        let lineClearPoint = lines == 1 ? POINTS.SINGLE :
             lines == 2 ? POINTS.DOUBLE :
                 lines == 3 ? POINTS.TRIPLE :
                     lines == 4 ? POINTS.TETRIS :
                         0;
-        pointsSound.play();
+        switch (this.combo) {
+            case 1:
+                combo1Sound.play();
+                break;
+            case 2:
+                combo2Sound.play();
+                break;
+            case 3:
+                combo3Sound.play();
+                break;
+            case 4:
+                combo4Sound.play();
+                break;
+            case 5:
+                combo5Sound.play();
+                break;
+            default:
+                clearlineSound.play();
+                break;
+        }
         return (account.level + 1) * lineClearPoint * this.combo++;
     }
 }
