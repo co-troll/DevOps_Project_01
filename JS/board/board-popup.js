@@ -54,6 +54,8 @@ const boardPopupEnter = (type, item) => {
             boardTitle.innerHTML = "게시글 쓰기";
             boardTitleInput.placeholder = "";
             boardContentInput.placeholder = "";
+            boardTitleInput.value = "";
+            boardContentInput.value = "";
             boardBtn.innerHTML = "작성";
             boardBtn.onclick = (e) => {
                 createBoard(e);
@@ -62,6 +64,7 @@ const boardPopupEnter = (type, item) => {
         case "modify":
             boardBtn.disabled = false;
             boardTitle.innerHTML = "게시글 수정";
+            boardTitleInput.placeholder = selectArr[item.dataset.index].title;
             boardTitleInput.value = selectArr[item.dataset.index].title;
             boardContentInput.value = selectArr[item.dataset.index].content;
             boardBtn.innerHTML = "수정";
@@ -73,6 +76,8 @@ const boardPopupEnter = (type, item) => {
             boardTitle.innerHTML = "게시글 삭제";
             boardTitleInput.placeholder = selectArr[item.dataset.index].title;
             boardContentInput.placeholder = "삭제하시려면 게시글 제목을 제목란에 입력해주세요.";
+            boardTitleInput.value = "";
+            boardContentInput.value = "";
             boardBtn.innerHTML = "삭제";
             boardBtn.onclick = () => {
                 deleteBoard(selectArr[item.dataset.index]);
