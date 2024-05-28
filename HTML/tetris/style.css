@@ -84,6 +84,9 @@ canvas {
     justify-content: center;
     margin-top: 10px;
   }
+  #sound-speaker {
+    font-size:15px;
+  }
 }
 
 @media (min-width: 900px) {
@@ -102,6 +105,9 @@ canvas {
     grid-template-rows: 127px 127px 127px 127px 127px;
     justify-content: center;
     margin-top: 10px;
+  }
+  #sound-speaker {
+    font-size:30px;
   }
 }
 
@@ -144,4 +150,8 @@ p {
   font-size: 16px;
   height: 30px;
   margin-bottom: 10px;
+}
+
+.sound-item {
+  cursor:pointer;
 }

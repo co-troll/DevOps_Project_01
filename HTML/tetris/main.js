@@ -56,6 +56,10 @@ const handleKeyPress = (event) => {
         }
         let p = moves[event.keyCode](board.piece);
         if (event.keyCode == KEY.SPACE) {
+            if (!paused)
+                dropSound.play();
+            else
+                return;
             while (board.valid(p)) {
                 account.score += POINTS.HARD_DROP;
                 board.piece.move(p);
@@ -64,6 +68,8 @@ const handleKeyPress = (event) => {
             board.piece.hardDrop();
         }
         else if (board.valid(p)) {
+            if (!paused)
+                movesSound.play();
             board.piece.move(p);
             if (event.keyCode == KEY.DOWN && !paused)
                 account.score += POINTS.SOFT_DROP;
@@ -84,6 +90,10 @@ const handleBtnPress = (event) => {
         }
         let p = moves[event](board.piece);
         if (event == KEY.SPACE) {
+            if (!paused)
+                dropSound.play();
+            else
+                return;
             while (board.valid(p)) {
                 account.score += POINTS.HARD_DROP;
                 board.piece.move(p);
@@ -92,6 +102,8 @@ const handleBtnPress = (event) => {
             board.piece.hardDrop();
         }
         else if (board.valid(p)) {
+            if (!paused)
+                movesSound.play();
             board.piece.move(p);
             if (event == KEY.DOWN && !paused)
                 account.score += POINTS.SOFT_DROP;
@@ -140,9 +152,13 @@ const resetGame = () => {
 const play = () => {
     document.onkeydown = handleKeyPress;
     resetGame();
+    if (requestId) {
+        cancelAnimationFrame(requestId);
+    }
     animate();
     playBtn.disabled = true;
     paused = false;
+    backgroundSound.play();
 };
 const animate = (now = 0) => {
     time.elapsed = now - time.start;
@@ -166,12 +182,15 @@ const gameOver = () => {
     ctx.fillText('GAME OVER', 2 * 1.05, 4);
     playBtn.disabled = false;
     paused = true;
+    sound.pause();
+    finishSound.play();
     checkHighScore(account.score);
 };
 const pause = () => {
     if (!requestId) {
         paused = false;
         animate();
+        backgroundSound.play();
         return;
     }
     paused = true;
@@ -182,6 +201,7 @@ const pause = () => {
     ctx.font = '1px Arial';
     ctx.fillStyle = 'yellow';
     ctx.fillText('PAUSED', 3 * 1.05, 4);
+    sound.pause();
 };
 const showHighScores = () => {
     const highScores = JSON.parse(localStorage.getItem("HighScores")) || [];
