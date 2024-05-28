@@ -194,7 +194,7 @@ const loginBtn = document.querySelector('.loginBtn');
 loginBtn.addEventListener('click', function(){ // 로컬스토리지 id, password값과 id, password input값이 같으면 sessionStorage에 id input값을 저장후 메인페이지로 넘어가게 할것.
     let IdInput = document.querySelector('.idInput').value;
     let PasswordInput = document.querySelector('.passwordInput').value;
-    if((userArray.find(user => user.id !== IdInput)) && (userArray.find(user => user.password !== PasswordInput))){
+    if((userArray.every(user => user.id !== IdInput)) || (userArray.every(user => user.password !== PasswordInput))){
         alert('아이디(로그인 전용 아이디) 또는 비밀번호를 잘못 입력했습니다.')
     } else if((userArray.find(user => user.id === IdInput)) && (userArray.find(user => user.password === PasswordInput))){
         sessionStorage.setItem('login', IdInput);
