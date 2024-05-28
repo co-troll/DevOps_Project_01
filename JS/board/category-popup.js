@@ -36,9 +36,11 @@ const categoryPopupEnter = (type) => {
             }
             break;
         case "modify":
+            categoryBtn.disabled = false;
             categoryTitle.innerHTML = "카테고리 수정";
             categoryDes.innerHTML = "이미지 변경";
             categoryInput.placeholder = document.querySelector(".selected > div").innerHTML;
+            categoryInput.value = document.querySelector(".selected > div").innerHTML;
             categoryBtn.innerHTML = "변경";
             categoryBtn.onclick = (e) => {
                 modifyCategory(e);

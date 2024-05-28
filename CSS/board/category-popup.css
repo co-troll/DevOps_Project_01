@@ -58,6 +58,7 @@
     border-radius: 50%;
     position: absolute;
     top: 0;
+    object-fit: cover;
 }
 
 .category-popup-img-text {
