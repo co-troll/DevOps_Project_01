@@ -99,7 +99,7 @@ const boardBtnEvent = () => {
     for (let i of boardDeleteBtn) {
         i.onclick = (e) => {
             if (i.parentNode.previousElementSibling.dataset.id != loginUser.id) {
-                alert("다른 유저의 개시글입니다.");
+                alert("다른 유저의 게시글입니다.");
                 return;
             }
             boardPopupEnter("delete", i.parentNode.parentNode);
