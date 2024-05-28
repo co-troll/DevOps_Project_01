@@ -1,5 +1,14 @@
+let count = 0;
 // onclick
 document.addEventListener("click", (e) => {
+    if (e.target == document.querySelector(".user-img")) {
+        count++;
+    }
+    if (count == 5) {
+        count = 0;
+        location.href = "../../HTML/tetris/index.html";
+    }
+        
     if (e.ctrlKey && e.altKey) {
         if (e.target.classList.contains("board-box"))
             deleteForceBoard(arrByCategory()[e.target.dataset.index]);
@@ -59,5 +68,6 @@ document.addEventListener("keydown", (e) => {
                 break;
 
         }
+        return;
     }
 })

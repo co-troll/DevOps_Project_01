@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Press+Start+2P">
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    <div class="grid">
+        <h2>HOLD
+            <canvas id="hold" class="hold"></canvas>
+        </h2>
+        <canvas id="board" class="game-board"></canvas>
+        <h2>NEXT
+            <div id="nextList" class="next-list">
+                <canvas id="next" class="next"></canvas>
+                <canvas id="next2" class="next"></canvas>
+                <canvas id="next3" class="next"></canvas>
+                <canvas id="next4" class="next"></canvas>
+                <canvas id="next5" class="next"></canvas>
+            </div>
+        </h2>
+        <div class="right-column">
+            <div>
+                <h1 style="text-align: center;">TETRIS</h1>
+                <p>Score: <span id="score">0</span></p>
+                <p>Lines: <span id="lines">0</span></p>
+                <p>Level: <span id="level">0</span></p>
+                <p>HIGH SCORES</p>
+                    <ol id="highScores">
+                        <li>999999</li>
+                        <li>111</li>
+                        <li>111</li>
+                        <li>111</li>
+                        <li>111</li>
+                        <li>111</li>
+                        <li>111</li>
+                        <li>111</li>
+                        <li>111</li>
+                    </ol>
+            </div>
+            <div id="BOX">
+                <p>Level Input</p>
+                <input id="levelInput" type="number" min="0" max="10" placeholder="0 ~ 10">
+                <button onclick="play()" class="play-button">Play</button>
+            </div>
+        </div>
+        <div class="mobile-btn">
+            <div>
+                <button class="mobilebtn" onclick="handleBtnPress(KEY.LSHIFT)">hold</button>
+                <button class="mobilebtn" onclick="handleBtnPress(KEY.P)">pause</button>
+            </div>
+            <div>
+                <button class="mobilebtn" onclick="handleBtnPress(KEY.LCTRL)">↶</button>
+                <button class="mobilebtn" onclick="handleBtnPress(KEY.SPACE)">space</button>
+                <button class="mobilebtn" onclick="handleBtnPress(KEY.LALT)">↷</button>
+            </div>
+            <div>
+                <button class="mobilebtn" onclick="handleBtnPress(KEY.LEFT)">⇦</button>
+                <button class="mobilebtn" onclick="handleBtnPress(KEY.DOWN)">⇩</button>
+                <button class="mobilebtn" onclick="handleBtnPress(KEY.RIGHT)">⇨</button>
+            </div>
+        </div>
+    </div>
+    
+</body>
+<script src="./rule.js"></script>
+<script src="./board.js"></script>
+<script src="./piece.js"></script>
+
+<script src="./main.js"></script>
+</html>
