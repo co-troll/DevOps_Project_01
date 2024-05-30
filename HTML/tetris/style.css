@@ -1,0 +1,157 @@
+*  {
+  font-family: 'Press Start 2P', cursive;
+}
+
+body, html {
+  touch-action: pan-x pan-y;
+  width: 100%;
+}
+ 
+
+h2 {
+  text-align: center;
+}
+
+h2 > canvas {
+  margin-top: 10px;
+}
+
+canvas {
+  border: 2px solid;
+  justify-content: center;
+}
+
+
+@media (max-width: 900px){
+  body {
+    transform: scale(0.8);
+  }
+
+  .mobile-btn {
+    grid-column: span 4;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin-top: 10px;
+  }
+
+  .mobile-btn > div {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+  }
+
+  .mobile-btn button {
+    padding: 3px 6px;
+    width: 100%;
+    height: 100px;
+    margin: 10px;
+  }
+
+  .right-column > div > * {
+    transform: scale(0.8);
+  }
+
+  li {
+    font-size: 10px;
+  }
+
+  .play-button {
+    font-size: 8px;
+    padding: 3px 6px;
+  }
+
+  p {
+    font-size: 10px;
+  }
+
+  h1 {
+    font-size: 20px;
+  }
+
+  h2 {
+    font-size: 16px;
+  }
+	.grid {
+    display: grid;
+    grid-template-columns: 70px 160px 70px 110px;
+    justify-content:center;
+  }
+
+  .next-list {
+    display: grid;
+    grid-template-rows: 64px 64px 64px 64px 64px;
+    justify-content: center;
+    margin-top: 10px;
+  }
+  #sound-speaker {
+    font-size:15px;
+  }
+}
+
+@media (min-width: 900px) {
+  .mobile-btn {
+    display: none;
+  }
+  .grid {
+    display: grid;
+    grid-template-columns: 140px 320px 140px 220px;
+    justify-content:center;
+    grid-auto-flow: row dense;
+  }
+
+  .next-list {
+    display: grid;
+    grid-template-rows: 127px 127px 127px 127px 127px;
+    justify-content: center;
+    margin-top: 10px;
+  }
+  #sound-speaker {
+    font-size:30px;
+  }
+}
+
+
+
+.right-column {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.game-board {
+  border: solid 2px;
+}
+
+.play-button {
+  background-color: #4caf50;
+  font-size: 16px;
+  padding: 15px 30px;
+  cursor: pointer;
+}
+
+ol {  
+  padding: 5px;
+  list-style-position: inside; 
+}
+
+p {
+  margin-left: 5px;
+}
+
+#BOX {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+#BOX > input {
+  font-size: 16px;
+  height: 30px;
+  margin-bottom: 10px;
+}
+
+.sound-item {
+  cursor:pointer;
+}

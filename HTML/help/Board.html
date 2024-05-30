@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="../../CSS/help/Board.css">
+    <link rel="stylesheet" href="../../CSS/main.css">
+</head>
+<body>
+    <div class="main_container">
+        <header>
+            <div><h2><p><span class="login_id">1</span><span class="welcome_text">님 환영합니다.</span><button class="logout_button"><span><label class="button_text">로그아웃</label><img src="../../CSS/help/image/turn-off.png" alt=""></span></button><button class="exit_button"><span><label class="button_text">나가기</label><svg  aria-hidden="true" role="img"  xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="none" viewBox="0 0 24 24"><g transform-origin="center"; transform="rotate(180)"><path fill="currentColor" fill-rule="evenodd" d="M2.293,11.293l4-4A1,1,0,1,1,7.707,8.707L5.414,11H17a1,1,0,0,1,0,2H5.414l2.293,2.293a1,1,0,1,1-1.414,1.414l-4-4a1,1,0,0,1,0-1.414ZM20,4V20a1,1,0,0,0,2,0V4a1,1,0,0,0-2,0Z" clip-rule="evenodd" class=""></path></g></svg></span></button></p></h2></div>
+        </header>
+        <nav>
+            <ul class="nav_ul">
+                <li class="home tab checking">홈</li>
+                <li class="help_bar tab">문의</li>
+                <li class="location_bar tab">오시는 길</li>
+                <li class="userguide_bar tab">안내서</li>
+            </ul>
+        </nav>
+        <div class="container">
+            <div class="container_left">
+                <div>
+                    <img src="./../../CSS/help/image/스크린샷 2024-05-28 오전 10.24.24.png" alt="" class="nuna">
+                </div>
+                <div>
+                    <img src="https://마루마루.site/600x150.gif" alt="" class="police1">
+                </div>
+                <div>
+                    <img src="https://마루마루.site/600x150.gif" alt="" class="police2">
+                </div>
+                <div>
+                    <img src="./../../CSS/help/image/산와머니.png" alt="" class="fake">
+                </div>
+            </div>
+            <div class="container_right">
+                <div class="main_show">
+                    <div>
+                        <div class="discord_usersGuide">
+                            <img src="../../CSS/help/image/환영고양이.png" alt="">
+                            <ul>
+                                <li>안녕하세요!</li>
+                                <li>이곳은 여러분의 질문과 의견을 접수하는 문의게시판입니다.</li>
+                                <li>궁금한 점이나 불편한 사항이 있으시면 언제든지 문의해주세요.</li>
+                                <li>문의 작성 시에는 존중하는 언어를 사용해주세요. 불필요한 비방이나 욕설은 삼가해주시기 바랍니다.</li>
+                                <li>더욱 긴급한 도움이 필요하신가요?</li>
+                                <li>고객센터(전화번호: 02-479-4050)로 연락주시거나, iphak@kiweb.or.kr으로 이메일을 보내주세요.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="help_board hide">
+                    <div class="help_info">
+                        <h2>첫번째 게시판</h2>
+                        <div class="search_bar">
+                            <p>
+                                <div class="create_button createList">
+                                    <button class="button_create">
+                                        <span class="button_inside"><img src="../../CSS/help/image/작성이미지.png" alt=""></span>
+                                        <span class="button_create_text">문의글 작성</span>
+                                    </button>
+                                </div>                       
+                                <div class="button" style="display: none;">
+                                    <img src="../../CSS/help/image/돋보기이미지.png" alt="" class="search_img">
+                                    <input type="text" id="input_test" class="" placeholder="검색...">
+                                </div>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="help_head">
+                        <ul>
+                            <li>번호</li>
+                            <li>제목</li>
+                            <li>작성자</li>
+                            <li>날짜</li>
+                            <li>조회</li>
+                        </ul>
+                    </div>
+                    <div class="board_list">
+                    </div>
+                </div>
+                <div class="locationBoard hide">
+                    <div class="help_info">
+                        <h2>오시는 길</h2>
+                        <div>
+                            <img src="./../../CSS/help/image/스크린샷 2024-05-23 오전 9.15.26.png" alt="">
+                        </div>
+                        <div class="location_info">
+                            <ul>
+                                <li><h3>Location</h3><p>지하철 5,8호선 2번출구 50m 이내 스타벅스 건물</p></li>
+                                <li><h3>Tel</h3><p>02-479-4050</p></li>
+                                <li><h3>Fax</h3><p>02-479-4056</p></li>
+                                <li><h3>Email</h3><p>iphak@kiweb.or.kr</p></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="board_list">
+                    </div>
+                </div>
+                <div class="userGuideBoard hide">
+                    <div class="help_info">
+                        <h2>게시판 안내서</h2>
+                        <ul class="guide_ul">
+                            <li class="guide_explain">
+                                <div><h2>저희 게시판에선 무엇을 제공하나요?</h2><hr></div>
+                                <p class="text_style">친구나 커뮤니티를 위한 초대 전용 집을 만드는 기능을 제공합니다. 이 집은 서로 대화하고, 어울리고, 즐겁게 지낼 수 있는 장소입니다. 다음과 같이 생겼습니다.</p>
+                                <p class="guide_image"><img src="../../CSS/help/image/화면소개 (1).png" alt=""></p>
+                                <p class="text_style">여러분은 모든 종류의 커뮤니티를 위한 서버를 개설하거나 가입할 수 있습니다 -- 예를 들면 독서 클럽 📚, 댄스 수업 💃, 스터디 그룹 🖊️ 또는 함께 시간을 보내고 싶은 친구 등이 되겠지요.</p>
+                                <div>
+                                    <ul class="explain_list">
+                                        <li>카테고리 추가</li>
+                                        <li>카테고리 수정</li>
+                                        <li>카테고리 삭제</li>
+                                        <li>게시글 작성</li>
+                                        <li>게시글 수정</li>
+                                        <li>게시글 삭제</li>
+                                        <li>게시글 정보</li>
+                                        <li>문의게시판</li>
+                                        <li>마이페이지</li>
+                                        <li>로그아웃</li>
+                                        <li>댓글 수정</li>
+                                        <li>답글 작성</li>
+                                        <li>댓글 삭제</li>
+                                    </ul>
+                                </div>
+                            </li>
+                            <li class="guide_customize">
+                                <div>
+                                    <h2>프로필 이미지를 커스터마이즈하는 방법</h2>
+                                    <hr>
+                                </div>
+                                <p class="text_style explain_list_customize1">데스크톱에서 아바타를 변경하려면 앱의 왼쪽 하단에 있는 사용자 설정 <img src="https://support.discord.com/hc/article_attachments/360060867651" alt="">&nbsp;톱니 바퀴를 클릭한 다음, 내 계정에서 편집 버튼을 선택하고 이미지를 업로드하세요!</p>  
+                                <p class="text_style explain_list_customize2">모바일을 사용하는 경우에는 화면을 왼쪽으로 스와이프하여 채널 보기로 이동하고, 화면 하단에 있는 탭 바를 확인하세요. 맨 오른쪽 탭은 사용자 설정으로 이동합니다 (프로필 사진을 추가한 경우에는 프로필 사진, 그렇지 않은 경우에는 로고가 표시됩니다!). 거기에서 프로필 아바타를 탭하여 새 이미지를 업로드하세요!</p>
+                            </li>
+                            <li class="guide_help">
+                                <div>
+                                    <h2>문제 해결 및 지원</h2><hr>
+                                </div>
+                                <p class="text_style">마지막으로, 사용 방법을 배우는 과정과 문제 해결을 위해 시도해볼 수 있는 초기 단계를 학습하는 데 도움이 되는 자원을 제공하고자 합니다.</p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script src="../../JS/help/Board.js"></script>
+<!-- <script src="./write.js"></script> -->
+</html>

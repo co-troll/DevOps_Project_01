@@ -21,7 +21,7 @@ document.querySelector('#test').addEventListener('click', function(event){
 /////////// 객체를 묶는  이미지에 값을 null이 아닌 이미지 값으로 넣기 //////////
 //  localStorage.setItem('User', JSON.stringify([{id : "이경재", password : "1234", nick : "bb", image : null }]))
 /////////////////////////////////////////////////////////////////
-sessionStorage.setItem('login', "이경재" );
+// sessionStorage.setItem('login', "이경재" );
 
 
 
@@ -30,12 +30,17 @@ sessionStorage.setItem('login', "이경재" );
 document.querySelector(".change_button").addEventListener("click", function(){
 
     const uid = sessionStorage.getItem("login");
-    const deee = JSON.parse(localStorage.getItem("User"));
+    const userList = JSON.parse(localStorage.getItem("User"));
 
-    for(let i =0; i< deee.length; i++){
-        if(deee[i].id === uid){
-            deee[i].nick = document.querySelector("#loc").value;
-            localStorage.setItem("User", JSON.stringify(deee))
+    if(userList.find(user => user.nick == document.querySelector("#loc").value && document.querySelector("#loc").value != document.querySelector("#loc").placeholder)){
+        alert('이미 존재하는 닉네임입니다.'); // 나중에 class 추가해서 nickname 중복체크 할것임.
+        return;
+    }
+
+    for(let i =0; i< userList.length; i++){
+        if(userList[i].id === uid){
+            userList[i].nick = document.querySelector("#loc").value;
+            localStorage.setItem("User", JSON.stringify(userList))
         }
     }
 });
@@ -46,9 +51,31 @@ document.querySelector(".change_button").addEventListener("click", function(){
 const nick_change = JSON.parse(localStorage.getItem("User"));
 const login_id = sessionStorage.getItem("login");
 // 만약에 세션스토리지에있는 유저안에 아이디가 로컬스토리지 배열안에 있는 아이디와 같다면 그안에있는 닉네임만 #loc안에 불러와줘
-for(let i = 0; i<nick_change.length; i++){
+for(let i = 0; i < nick_change.length; i++){
     if(nick_change[i].id === login_id){
-        document.querySelector("#loc").value = nick_change[i].nick;
+        document.querySelector("#loc").placeholder = nick_change[i].nick;
+
+        if (nick_change[i].image) {
+            document.querySelector('.preview_oen').innerHTML="";
+            const newImg = document.createElement("img");
+            newImg.src = nick_change[i].image;
+            
+            
+            // newImg.style.width = "170px";
+            // newImg.style.height = "170px";
+            // newImg.style.borderRadius = "50%";
+            newImg.draggable = false;
+            
+            document.querySelector('.preview_oen').append(newImg);
+            document.querySelector('#test').style.visibility = 'hidden';
+        } 
+        else {
+            const initImg = document.querySelector(".preview_oen > img");
+            initImg.style.width = "120px";
+            initImg.style.height = "120px";
+            initImg.style.borderRadius = "50%";
+            initImg.draggable = false;
+        }
     }
 }
 
@@ -62,7 +89,16 @@ document.querySelector("#chooseFile").addEventListener("change", function(e){
         
         reader.onload=(e)=>{
             const base64Image = e.target.result;
-            localStorage.setItem("User",base64Image);
+            const uid = sessionStorage.getItem("login");
+            const userList = JSON.parse(localStorage.getItem("User"));
+            for(let i =0; i< userList.length; i++){
+                if(userList[i].id === uid){
+                    userList[i].image = base64Image;
+                    localStorage.setItem("User", JSON.stringify(userList))
+                }
+            }
+            
+            // localStorage.setItem("User",base64Image);
         }
         reader.readAsDataURL(e.target.files[0]);
 
@@ -98,15 +134,15 @@ chooseFile.addEventListener("change", (e) => {
         newImg.src = imgBase64;
 
 
-        newImg.style.width = "170px";
-        newImg.style.height = "170px";
+        // newImg.style.width = "170px";
+        // newImg.style.height = "170px";
+        // newImg.style.borderRadius = "50%";
         newImg.draggable = false;
-        newImg.style.borderRadius = "50%";
        
         document.querySelector('.preview_oen').append(newImg);
         document.querySelector('#test').style.visibility = 'hidden';
         ////// 사진 이미지 로컬스토리지 배열안에 저장해줌 //////// 
-        localStorage.setItem('User', JSON.stringify([{id : "이경재", password : "1234" , nick : "bb", "image" : imgBase64 }]))
+        // localStorage.setItem('User', JSON.stringify([{id : "이경재", password : "1234" , nick : "bb", "image" : imgBase64 }]))
     }
 
     reader.readAsDataURL(img);
