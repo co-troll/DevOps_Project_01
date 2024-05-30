@@ -216,5 +216,5 @@ document.querySelector('.nuna').onclick = () => {
 }
 
 document.querySelector('.fake').onclick = () => {
-    location.href = 'http://127.0.0.1:5500/HTML/help/becareful.html';
+    location.href = '../../HTML/help/becareful.html';
 }

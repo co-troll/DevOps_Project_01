@@ -90,6 +90,10 @@ imgInput.addEventListener("change", (e) => {
         category.setImage(null);
     }
     const img = e.target.files[0];
+    console.log(img.type);
+    if (img.type.split("/")[0] != "image")
+        return
+        console.log(1);
     if (img == undefined) 
         return;
     
