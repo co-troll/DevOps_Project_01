@@ -47,13 +47,7 @@
 
 
 ### 고객센터 페이지
-- 메인
-![고객센터](https://github.com/user-attachments/assets/d24f9179-feee-4660-9081-460a2934c3cb)
-
-- 문의
-![고객센터 문의](https://github.com/user-attachments/assets/9b949463-37b5-4a01-bacc-fa8d12b2300a)
-
-- 안내서
+- 고객센터
 ![고객센터 안내서](https://github.com/user-attachments/assets/e90061b0-b424-456c-901c-0df36289b5a5)
 
 
